@@ -1,0 +1,29 @@
+// mixins
+
+@mixin clearfix {
+	&::after {
+		content: '';
+		display: block;
+		height: 0;
+		visibility: hidden;
+		clear: both;
+	}
+}
+
+@mixin bgCover($pos:center) {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: $pos;
+}
+
+@mixin longWordWrap {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	word-break: break-word;
+}
+
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}

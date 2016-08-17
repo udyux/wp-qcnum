@@ -1,0 +1,32 @@
+/** Theme Name: _UdyUX
+ 	* Theme URI: http://udy.io/udyux-theme
+	* Author: Nicolas Udy
+	* Author URI: http://udy.io
+	* Description: _S + UdyUX
+	* Version: 1.0.0
+	* License: GNU General Public License v2 or later
+	* License URI: http://www.gnu.org/licenses/gpl-2.0.html
+	* Text Domain: _udyux
+	*
+	* Sass methodology based on BEM
+	*
+	* _UdyUX is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+	* Underscores is distributed under the terms of the GNU GPL v2 or later.
+*/
+
+@import "settings/color";
+@import "settings/easing";
+@import "settings/font";
+@import "settings/mediaquery";
+@import "tools/function";
+@import "tools/mixin";
+@import "tools/extend";
+@import "assets/fontface";
+@import "tools/reset";
+@import "settings/body";
+@import "settings/wp";
+@import "tools/hack";
+@import "tools/util";
+@import "components/button";
+
+@import "settings/keyframes";

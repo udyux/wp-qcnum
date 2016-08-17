@@ -1,0 +1,59 @@
+{
+  "name": "wp-workflow",
+  "version": "1.0.0",
+  "description": "_UdyUX WordPress workflow",
+  "main": "./index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/udyux/wp-workflow.git"
+  },
+  "author": {
+    "name": "Nicolas Udy",
+    "email": "dev@udy.io"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/udyux/wp-workflow/issues"
+  },
+  "engines": {
+    "node": "5.11.x"
+  },
+  "homepage": "https://github.com/udyux/wp-workflow#readme",
+  "devDependencies": {
+    "autoprefixer": "6.3.x",
+    "beepbeep": "1.2.x",
+    "browser-sync": "2.13.x",
+    "colors": "1.1.x",
+    "css-declaration-sorter": "1.4.x",
+    "css-mqpacker": "5.0.x",
+    "cssnano": "3.7.x",
+    "gulp": "3.9.x",
+    "gulp-concat": "2.6.x",
+    "gulp-fontgen": "0.1.x",
+    "gulp-iconfont": "8.0.x",
+    "gulp-iconfont-css": "2.1.x",
+    "gulp-jshint": "2.0.x",
+    "gulp-json-editor": "2.2.x",
+    "gulp-once": "1.0.x",
+    "gulp-plumber": "1.1.x",
+    "gulp-postcss": "6.1.x",
+    "gulp-rename": "1.2.x",
+    "gulp-replace": "0.5.x",
+    "gulp-sass": "2.3.x",
+    "gulp-svg-sprite": "1.3.x",
+    "gulp-svgmin": "1.2.x",
+    "gulp-tinypng-compress": "1.2.x",
+    "gulp-uglify": "1.5.x",
+    "jshint": "2.9.x",
+    "jshint-stylish": "2.2.x",
+    "node-notifier": "4.6.x",
+    "postcss-custom-media": "5.0.x",
+    "postcss-position-alt": "0.6.x",
+    "postcss-pxtorem": "3.3.x",
+    "postcss-short-color": "1.0.x",
+    "postcss-size": "1.0.x"
+  }
+}

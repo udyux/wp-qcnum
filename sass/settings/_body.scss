@@ -1,0 +1,17 @@
+/* body */
+
+body {
+  height: 100%;
+  color: cc(text) cc(bg);
+  font-family: $f_regular;
+  font-size: 22px;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: cc(on, .3);
+}
+
+::-moz-selection {
+  background: cc(on, .3);
+}

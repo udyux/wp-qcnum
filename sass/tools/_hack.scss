@@ -1,0 +1,12 @@
+/* hacks */
+
+.hack {
+  &--checkbox {
+    display: none;
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px cc(bg) inset !important;
+  -webkit-text-fill-color: cc(text);
+}
