@@ -1,0 +1,11 @@
+@font-face {
+    font-family: "RevolutionGothic-ExtraBold";
+    src: url("fonts/RevolutionGothic-ExtraBold/RevolutionGothic-ExtraBold.eot");
+    src: url("fonts/RevolutionGothic-ExtraBold/RevolutionGothic-ExtraBold.eot?#iefix") format("embedded-opentype"),
+         url("fonts/RevolutionGothic-ExtraBold/RevolutionGothic-ExtraBold.woff2") format("woff2"),
+         url("fonts/RevolutionGothic-ExtraBold/RevolutionGothic-ExtraBold.woff") format("woff"),
+         url("fonts/RevolutionGothic-ExtraBold/RevolutionGothic-ExtraBold.ttf") format("ttf"),
+         url("fonts/RevolutionGothic-ExtraBold/RevolutionGothic-ExtraBold.svg#RevolutionGothic-ExtraBold") format("svg");
+    font-style: normal;
+    font-weight: normal;
+}

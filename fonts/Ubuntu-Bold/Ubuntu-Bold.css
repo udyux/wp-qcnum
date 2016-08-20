@@ -1,0 +1,11 @@
+@font-face {
+    font-family: "Ubuntu-Bold";
+    src: url("fonts/Ubuntu-Bold/Ubuntu-Bold.eot");
+    src: url("fonts/Ubuntu-Bold/Ubuntu-Bold.eot?#iefix") format("embedded-opentype"),
+         url("fonts/Ubuntu-Bold/Ubuntu-Bold.woff2") format("woff2"),
+         url("fonts/Ubuntu-Bold/Ubuntu-Bold.woff") format("woff"),
+         url("fonts/Ubuntu-Bold/Ubuntu-Bold.ttf") format("ttf"),
+         url("fonts/Ubuntu-Bold/Ubuntu-Bold.svg#Ubuntu-Bold") format("svg");
+    font-style: normal;
+    font-weight: normal;
+}

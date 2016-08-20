@@ -1,0 +1,58 @@
+/* row */
+
+.row {
+	@media (--lg) {
+		display: flex;
+		align-items: stretch;
+		@include clearfix;
+	}
+
+	&--md {
+		@media (--md) {
+			display: flex;
+			align-items: stretch;
+			@include clearfix;
+		}
+
+		.row__item {
+			@media (--md) {
+				flex-grow: 1;
+				flex-shrink: 0;
+				flex-basis: 0;
+				float: left;
+			}
+		}
+	}
+
+	&--sm {
+		display: flex;
+		align-items: stretch;
+		@include clearfix;
+
+		.row__item {
+			flex-grow: 1;
+			flex-shrink: 0;
+			flex-basis: 0;
+			float: left;
+		}
+
+		@media (--sm) {
+			display: block;
+			float: none;
+		}
+	}
+
+	&__item {
+		@media (--lg) {
+			flex-grow: 1;
+			flex-shrink: 0;
+			flex-basis: 0;
+			float: left;
+		}
+
+		&--double {
+			position: relative;
+			@media (--lg) {flex: 2 0 0}
+		}
+	}
+}

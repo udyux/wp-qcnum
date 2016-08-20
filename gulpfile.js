@@ -7,7 +7,7 @@ var settings = {
 		// browser to use -> string | array
 		useBrowser: 'google chrome',
 		// local URL | false to serve static -> string | boolean
-		useProxy: 'false'
+		useProxy: 'quebecnumerique.dev'
 	},
 
 	errors: {
