@@ -1,0 +1,6 @@
+/* newsletter form */
+
+.newsletterForm {
+  background-image: url(images/form_bg.jpg);
+  @include bgCover;
+}

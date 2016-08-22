@@ -1,0 +1,30 @@
+/* header */
+
+.header {
+  position: relative;
+  height: 35vh;
+  color: cc(text,header);
+  @include bgCover;
+
+  &::after {
+    content: '';
+    size: 100%;
+    absolute: top left;
+    @include gradient;
+  }
+
+  &--frontpage {
+    height: 100vh;
+    max-height: 900px;
+  }
+
+  &__title {
+    absolute: top 50% left 50%;
+    transform: translate(-50%,-50%);
+    font-family: fc(display);
+    font-size: 120px;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 1;
+  }
+}

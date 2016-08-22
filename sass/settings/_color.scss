@@ -1,20 +1,29 @@
-// colors
+// color-control
+// use cc($color, [$palette | $alpha], [$alpha])
 
 $colors: (
 	default: (
-		bg: #fff,
     text: #262626,
+		bg: #fff,
     primary: #2685e2,
     alt: #78c3f5,
     accent: #00eeb2
 	),
-  link: (
+  alt: (
     text: #fff,
-    hover: #9c9c9c,
-    visited: #eceded
+    bg: #262626
+  ),
+  header: (
+    text: #fff
+  ),
+  footer: (
+    text: #aeaeae,
+    bg: #363636,
+    cr-text: #9c9c9c,
+    cr-bg: #262626
   ),
 	input: (
-		bg: #fff,
-    text: #363636
+    text: #363636,
+    bg: #fff
 	)
 );

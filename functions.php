@@ -30,7 +30,7 @@ add_action( 'wp_enqueue_scripts', '_udyux_main_assets' );
 // https://www.advancedcustomfields.com/resources/acfinputadmin_enqueue_scripts/
 function _udyux_admin_assets() {
 	wp_register_style( '_udyux-admin-style', get_stylesheet_directory_uri() . '/admin-style.css', false, '1.0.0' );
-	wp_enqueue_style( 'udyux-admin-style' );
+	wp_enqueue_style( '_udyux-admin-style' );
 }
 add_action( 'acf/input/admin_enqueue_scripts', '_udyux_admin_assets', 15 );
 #/

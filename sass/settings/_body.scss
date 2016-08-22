@@ -2,16 +2,9 @@
 
 body {
   height: 100%;
-  color: cc(text) cc(bg);
-  font-family: $f_regular;
-  font-size: 22px;
+  poition: relative;
+  color: cc(text);
+  background-color: cc(bg);
+  font-family: fc(light);
   overflow-x: hidden;
-}
-
-::selection {
-  background: cc(on, .3);
-}
-
-::-moz-selection {
-  background: cc(on, .3);
 }

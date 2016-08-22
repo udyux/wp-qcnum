@@ -1,0 +1,51 @@
+/* footer */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 2.25vw 4.5vw;
+  padding-bottom: calc(2.25vw + 3rem);
+  color: cc(text,footer);
+  background-color: cc(bg,footer);
+  line-height: 1.3;
+
+  &__title {
+    font-family: fc(bold);
+    margin-bottom: .75rem;
+  }
+
+  &__message {
+    margin-right: 4.5vw;
+  }
+
+  &__social {
+    display: inline-block;
+    size: 26px;
+    fill: cc(text,footer);
+
+    &:hover {
+      fill: cc(text,alt);
+    }
+
+    &+& {
+      margin-left: .5rem;
+    }
+  }
+
+  &__copyright {
+    absolute: bottom left;
+    width: 100%;
+    padding-left: 4.5vw;
+    line-height: 3rem;
+    vertical-align: middle;
+    color: cc(cr-text,footer);
+    background-color: cc(cr-bg,footer);
+    font-size: .9rem;
+  }
+
+  a:hover {
+    color: cc(text,alt);
+    text-decoration: underline;
+  }
+}

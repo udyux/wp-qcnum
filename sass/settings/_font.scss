@@ -1,5 +1,8 @@
-// fonts
+// font-control
+// use fc($font);
 
-$f_regular: "Akrobat-Regular";
-$f_light: "Akrobat-ExtraLight";
-$f_bold: "Akrobat-SemiBold";
+$fonts: (
+  light: "Ubuntu-Light",
+  bold: "Ubuntu-Bold",
+  display: "RevolutionGothic-ExtraBold"
+);

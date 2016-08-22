@@ -1,5 +1,6 @@
-// function
+// functions
 
+// color-control
 @function cc($color, $option: false, $alpha: false) {
   $opacity: null;
   $palette: null;
@@ -14,4 +15,10 @@
   $result: if($opacity, rgba(map-get($getPalette, $color), $opacity), map-get($getPalette, $color));
 
   @return $result;
+}
+
+// font-control
+@function fc($font) {
+  $fontString: map-get($fonts, $font);
+  @return $fontString;
 }

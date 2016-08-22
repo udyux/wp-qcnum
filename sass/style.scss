@@ -20,7 +20,6 @@
 @import "settings/mediaquery";
 @import "tools/function";
 @import "tools/mixin";
-@import "tools/extend";
 @import "assets/fontface";
 @import "tools/reset";
 @import "settings/body";
@@ -28,5 +27,11 @@
 @import "tools/hack";
 @import "tools/util";
 @import "components/button";
-
+@import "components/row";
+@import "components/section";
+@import "components/nav";
+@import "components/header";
+@import "components/footer";
+@import "components/activity";
+@import "components/newsletterForm";
 @import "settings/keyframes";

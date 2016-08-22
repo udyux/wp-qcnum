@@ -1,29 +1,26 @@
 /* admin
 ---------*/
 
-#post-body-content .acf-fields {
+.acf-postbox.seamless .acf-fields {
 	display: flex !important;
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
 
-#post-body-content .half-field {
-	width: 45%;
-	margin: 0;
+.acf-postbox.seamless .acf-fields .acf-field {
+  width: 100%;
+	margin-top: 0;
+  margin-right: 0;
+  margin-top: 2rem;
+  margin-left: 0;
 }
 
-#post-body-content .third-field {
-	width: 30%;
-	margin: 0;
+.acf-postbox.seamless .acf-fields .acf-field-repeater .acf-field {
+  margin-top: 0;
 }
 
-#post-body-content .single-field {
-	width: 100%;
-	margin: 0;
+.acf-postbox.seamless .acf-tab-wrap {
+  width: 100%;
 }
-
-#post-body-content .half-field + .half-field + *,
-#post-body-content .third-field + .third-field + *,
-#post-body-content .single-field + .single-field + * {margin-top: 30px}
 
 .acf-fields:after {display: none}

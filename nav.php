@@ -8,15 +8,16 @@
  */
 ?>
 
-<nav id="site-navigation" class="main-navigation" role="navigation">
+<nav id="site-navigation" class="nav" role="navigation">
 	<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
 		<?php esc_html_e( 'Primary Menu', '_udyux' ); ?>
 	</button>
 
 	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-		<h1 id="site-name">québec numérique</h1>
-		<img src="<?php the_field('logo', 'options'); ?>" class="logo" alt="québec numérique"/>
+		<img class="logo" src="<?php the_field('logo', 'options'); ?>" alt="québec numérique"/>
 	</a>
 
-	<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+  <menu class="nav__menu">
+	 <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+ </menu>
 </nav>

@@ -11,59 +11,34 @@
  */
 ?>
 
-<header id="masthead" class="site-header parallax-parent" role="banner">
-	<div class="hero-img parallax" data-ratio=".35">
-		<img src="<? the_field('frontpage_background') ?>"/>
-	</div>
-
-	<div class="overlay"></div>
-
-	<h1><? the_field('banner'); ?></h1>
-
-	<span class="icon lead"><svg class="icon"><use xlink:href="#caret"></use></svg></span>
+<header class="header header--frontpage" role="banner" style="background-image:url(<? the_field('header_background'); ?>)">
+	<h1 class="header__title"><? the_field('header_banner'); ?></h1>
+	<span class="header__lead"><svg class="util__icon"><use xlink:href="#caret"></use></svg></span>
 </header>
 
-<!-- activities section -->
-<section id="activities">
-	<h2 class="title">implications</h2>
+<!-- activity -->
+<section class="section activity">
+	<h2 class="section__title"><? the_field('activity_title'); ?></h2>
 
-	<div class="flexbox">
+	<div class="row--md activity__row">
 
-		<? if ( have_rows('activities') ): while ( have_rows('activities') ) : the_row(); ?>
-		<div class="activity">
-			<img src="<? the_sub_field('activity_icon'); ?>" alt="<? the_sub_field('activity_title'); ?>"/>
+		<? if ( have_rows('activity_blocks') ): while ( have_rows('activity_blocks') ) : the_row(); ?>
+		<div class="activity__block">
+			<img class="activity__icon" src="<? the_sub_field('block_icon'); ?>" alt="<? the_sub_field('activity_title'); ?>"/>
 
-			<h3><? the_sub_field('activity_title'); ?></h3>
+			<h3 class="activity__title"><? the_sub_field('block_title'); ?></h3>
 
-			<p><? the_sub_field('activity_desc'); ?></p>
+			<p class="activity__desc"><? the_sub_field('block_description'); ?></p>
 		</div>
 		<? endwhile; endif; ?>
 
 	</div>
-</section>
-
-<!-- glider section -->
-<section id="glider">
-	<div class="glider-box">
-
-		<? if ( have_rows('areas') ): while ( have_rows('areas') ) : the_row(); ?>
-		<div class="glider">
-			<h3><? the_sub_field('area_title'); ?></h3>
-
-			<p><? the_sub_field('area_text'); ?></p>
-		</div>
-		<? endwhile; endif; ?>
-	</div>
-
-	<div class="glider-nav"></div>
-
-	<h2 class="title">chantiers</h2>
 </section>
 
 <!-- latest articles and events -->
-<section id="latest">
-	<!-- article previews -->
-	<aside id="articles">
+<section class="row">
+	<!-- articles -->
+	<aside class="feed feed--news">
 		<?php
 		$the_articles = new WP_Query( array(
 			'posts_per_page'	=> 3,
@@ -73,20 +48,21 @@
 
 		$c = 0;
 		if ( $the_articles->have_posts() ): while ( $the_articles->have_posts() ) : $the_articles->the_post();
+      // first article's excerpt is 500 characters
 			$max = ( $c == 0 ) ? 500 : 190;
 			$c++;
 		?>
 
-			<article>
-				<div class="latest-bg" class="" style="background-image:url( <? echo wp_get_attachment_url( get_post_thumbnail_id($post->ID)); ?> )"></div>
-				<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
+			<article class="feed__item" style="background-image:url( <? echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?> )">
+				<h3 class="feed__title"><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
 				<p><? echo trim_excerpt( get_the_excerpt(), $max ); ?></p>
 			</article>
 
 		<? endwhile; endif; wp_reset_query(); ?>
 	</aside>
-	<!-- event previews -->
-	<aside id="events">
+
+	<!-- events -->
+	<aside class="feed feed--events">
 		<?php
 		$the_events = new WP_Query( array(
 			'posts_per_page'	=> 3,
@@ -96,9 +72,8 @@
 
 		if ( $the_events->have_posts() ): while ( $the_events->have_posts() ) : $the_events->the_post(); ?>
 
-			<article>
-				<div class="latest-bg" class="" style="background-image:url( <? echo wp_get_attachment_url( get_post_thumbnail_id($post->ID)); ?> )"></div>
-				<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
+			<article class="feed__item" style="background-image:url( <? echo wp_get_attachment_url( get_post_thumbnail_id($post->ID)); ?> )">
+				<h3 class="feed__title"><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
 				<p><? echo trim_excerpt( get_the_excerpt(), 350 ); ?></p>
 			</article>
 

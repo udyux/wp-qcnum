@@ -10,6 +10,14 @@
 	}
 }
 
+@mixin gradient {
+  background-image: linear-gradient(
+    to bottom,
+    cc(accent,.65),
+    cc(primary)
+  );
+}
+
 @mixin bgCover($pos:center) {
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -20,4 +28,10 @@
 	overflow-wrap: break-word;
 	word-wrap: break-word;
 	word-break: break-word;
+}
+
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
