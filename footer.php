@@ -8,7 +8,6 @@
  *
  * @package _UdyUX
  */
-
 ?>
 
     <!-- newsletter form -->
@@ -38,13 +37,17 @@
   			<h6 class="footer__title"><? the_field('social_title', 'options') ?></h6>
 
         <ul>
-  			  <? if ( have_rows('social_links', 'options') ) : while ( have_rows('social_links', 'options') ) : the_row(); ?>
-            <li class="footer__social">
-              <a href="<? the_sub_field('social_link') ?>" target="_blank">
-                <svg class="icon"><use xlink:href="#<? the_sub_field('social_icon') ?>"></use></svg>
-              </a>
-            </li>
+
+          <? if ( have_rows('social_links', 'options') ) : while ( have_rows('social_links', 'options') ) : the_row(); ?>
+
+          <li class="footer__social">
+            <a href="<? the_sub_field('social_link') ?>" target="_blank">
+              <svg class="icon"><use xlink:href="#<? the_sub_field('social_icon') ?>"></use></svg>
+            </a>
+          </li>
+
   			  <? endwhile; endif; ?>
+
         </ul>
   		</div>
 
@@ -52,12 +55,10 @@
   	</footer>
 
   </main>
-</div>
 
-<?php if ( get_post_type() == 'event' ):?>
+  <? if ( get_post_type() == 'event' ):?>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 	<script src="<? echo bloginfo('stylesheet_directory'); ?>/js/event-scripts.js"></script>
-<? endif; ?>
-
+  <? endif; wp_footer(); ?>
 </body>
 </html>

@@ -3,6 +3,29 @@
 .activity {
   color: cc(text,alt);
   background-color: cc(primary);
+  text-align: center;
 
+  &__row {
+    margin-top: 4.5vw;
+  }
 
+  &__block {
+    padding-bottom: 3rem;
+
+    &+& {
+      margin-left: 2.25vw;
+    }
+  }
+
+  &__icon {
+    width: 9rem;
+    height: auto;
+    margin-bottom: 4.5vw;
+  }
+
+  &__title {
+    font-family: fc(display);
+    font-size: 36px;
+    margin-bottom: 2.25vw;
+  }
 }

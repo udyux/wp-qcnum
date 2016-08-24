@@ -1,6 +1,6 @@
 // media queries
 
-@custom-media --all-mobile only screen and (max-width: 678px);
+@custom-media --all-mobile only screen and (max-width: 1023px);
 @custom-media --only-phone only screen and (max-width: 735px);
 @custom-media --tablet only screen and (min-width: 736px);
 @custom-media --desktop only screen and (min-width: 1024px);

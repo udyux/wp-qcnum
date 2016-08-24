@@ -13,8 +13,8 @@
 @mixin gradient {
   background-image: linear-gradient(
     to bottom,
-    cc(accent,.65),
-    cc(primary)
+    cc(accent,.65) 40%,
+    cc(primary,.65)
   );
 }
 

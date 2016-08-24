@@ -12,7 +12,7 @@
 ?>
 
 <header class="header header--frontpage" role="banner" style="background-image:url(<? the_field('header_background'); ?>)">
-	<h1 class="header__title"><? the_field('header_banner'); ?></h1>
+	<h1 class="header__title"><span class="text--desktop"><? the_field('header_banner'); ?></span><span class="text--mobile"><? the_field('mobile_header_banner'); ?></span></h1>
 	<span class="header__lead"><svg class="util__icon"><use xlink:href="#caret"></use></svg></span>
 </header>
 
@@ -22,14 +22,14 @@
 
 	<div class="row--md activity__row">
 
-		<? if ( have_rows('activity_blocks') ): while ( have_rows('activity_blocks') ) : the_row(); ?>
-		<div class="activity__block">
+		<? if ( have_rows('activity_blocks') ) : while ( have_rows('activity_blocks') ) : the_row(); ?>
+
+    <div class="activity__block row__item">
 			<img class="activity__icon" src="<? the_sub_field('block_icon'); ?>" alt="<? the_sub_field('activity_title'); ?>"/>
-
 			<h3 class="activity__title"><? the_sub_field('block_title'); ?></h3>
-
 			<p class="activity__desc"><? the_sub_field('block_description'); ?></p>
 		</div>
+
 		<? endwhile; endif; ?>
 
 	</div>

@@ -1,5 +1,31 @@
 /* section */
 
 .section {
-	line-height: 1.15;
+  padding: 4.5vw;
+
+  &__title {
+    position: relative;
+    padding: .25em 0;
+    font-family: fc(display);
+    font-size: 42px;
+    text-align: center;
+    text-transform: uppercase;
+
+    &::before,
+    &::after {
+      content: '';
+      size: 9vw 2px;
+      absolute: top left 50%;
+      transform: translateX(-50%);
+      background-color: cc(bg);
+    }
+
+    &::after {
+      top: 100%;
+    }
+  }
+
+  p {
+    line-height: 1.15;
+  }
 }

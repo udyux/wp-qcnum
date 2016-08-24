@@ -15,16 +15,33 @@
 
   &--frontpage {
     height: 100vh;
-    max-height: 900px;
+    max-height: 1080px;
+
+    &::after {
+      background-image: linear-gradient(
+        to bottom,
+        cc(accent,.65) 40%,
+        cc(primary)
+      );
+    }
   }
 
   &__title {
-    absolute: top 50% left 50%;
-    transform: translate(-50%,-50%);
+    width: 100%;
+    absolute: top 50% left;
+    transform: translateY(-50%);
     font-family: fc(display);
-    font-size: 120px;
+    font-size: 60px;
     text-transform: uppercase;
     text-align: center;
     z-index: 1;
+
+    @media (--tablet) {
+      font-size: 90px;
+    }
+
+    @media (--desktop) {
+      font-size: 120px;
+    }
   }
 }

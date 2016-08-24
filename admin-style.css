@@ -1,6 +1,11 @@
 /* admin
 ---------*/
 
+#adminmenu .wp-menu-image img {
+  width: 20px;
+  height: auto;
+}
+
 .acf-postbox.seamless .acf-fields {
 	display: flex !important;
 	flex-wrap: wrap;

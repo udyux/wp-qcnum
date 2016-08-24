@@ -5,39 +5,31 @@
 		display: flex;
 		align-items: stretch;
 		@include clearfix;
-	}
+
+    &__item {
+  		flex-grow: 1;
+  		flex-shrink: 0;
+  		flex-basis: 0;
+  		float: left;
+
+  		&--double {
+        flex: 2 0 0;
+  		}
+  	}
+  }
 
 	&--md {
 		@media (--tablet) {
 			display: flex;
 			align-items: stretch;
 			@include clearfix;
-		}
 
-		.row__item {
-			@media (--tablet) {
-				flex-grow: 1;
-				flex-shrink: 0;
-				flex-basis: 0;
-				float: left;
-			}
-		}
-	}
-
-	&__item {
-		@media (--desktop) {
-			flex-grow: 1;
-			flex-shrink: 0;
-			flex-basis: 0;
-			float: left;
-		}
-
-		&--double {
-			position: relative;
-
-      @media (--desktop) {
-        flex: 2 0 0;
-      }
-		}
+  		.row__item {
+  			flex-grow: 1;
+  			flex-shrink: 0;
+  			flex-basis: 0;
+  			float: left;
+  		}
+    }
 	}
 }

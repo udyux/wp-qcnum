@@ -16,20 +16,27 @@ require get_template_directory() . '/inc/core-functions.php';
 require get_template_directory() . '/inc/post-types.php';
 
 
-## Enqueue main scripts and styles.
+# Enqueue main scripts and styles.
 function _udyux_main_assets() {
-	wp_enqueue_style( '_udyux-style', get_stylesheet_uri() );
-	wp_enqueue_script( '_udyux-parallaxr', get_template_directory_uri() . '/js/parallaxr.min.js', array(), '20160101', true );
-	wp_enqueue_script( '_udyux-scripts', get_template_directory_uri() . '/js/scripts.js', array(), '20160101', true );
+  // replace default wp jquery
+  wp_deregister_script('jquery');
+
+  wp_register_script('jquery', 'https://code.jquery.com/jquery-3.1.0.slim.min.js', array(), '20160824', true);
+  wp_enqueue_script('jquery');
+
+  wp_register_script('_udyux-scripts', get_template_directory_uri() . '/js/scripts.js', array(), '20160824', true);
+  wp_enqueue_script('_udyux-scripts');
+
+  wp_enqueue_style( '_udyux-style', get_stylesheet_uri() );
 }
-add_action( 'wp_enqueue_scripts', '_udyux_main_assets' );
+add_action('wp_enqueue_scripts', '_udyux_main_assets');
 #/
 
 
 ## Enqueue admin custom stylesheet through ACF
 // https://www.advancedcustomfields.com/resources/acfinputadmin_enqueue_scripts/
 function _udyux_admin_assets() {
-	wp_register_style( '_udyux-admin-style', get_stylesheet_directory_uri() . '/admin-style.css', false, '1.0.0' );
+	wp_register_style('_udyux-admin-style', get_stylesheet_directory_uri() . '/admin-style.css');
 	wp_enqueue_style( '_udyux-admin-style' );
 }
 add_action( 'acf/input/admin_enqueue_scripts', '_udyux_admin_assets', 15 );
@@ -42,11 +49,20 @@ if ( function_exists('acf_add_options_page') ) {
 	acf_add_options_page(array(
 		'page_title' 	=> 'Général',
 		'menu_title' 	=> 'Général',
-		'menu_slug' 	=> 'qcnum-global',
+		'menu_slug' 	=> 'qcnum-global-settings',
 		'capability' 	=> 'edit_posts',
 		'redirect' 	=> false,
-		'icon_url' => get_bloginfo('stylesheet_directory').'/images/qn.png'
-	) );
+		'icon_url' => get_bloginfo('stylesheet_directory') . '/icons/globe.png'
+	));
+
+  acf_add_options_page(array(
+    'page_title' 	=> 'Accueil',
+		'menu_title' 	=> 'Accueil',
+		'menu_slug' 	=> 'qcnum-home-settings',
+		'capability' 	=> 'edit_posts',
+		'redirect' 	=> false,
+		'icon_url' => get_bloginfo('stylesheet_directory') . '/icons/home.png'
+	));
 }
 #/
 

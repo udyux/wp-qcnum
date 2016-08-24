@@ -1,4 +1,9 @@
 <?php
+/**
+ 	* _UdyUX custom post types
+ 	*
+ 	* @package _UdyUX
+*/
 
 // Register custom post types
 function add_custom_post_types() {

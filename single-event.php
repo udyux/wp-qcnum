@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package QcNum
+ * @package _UdyUX
  */
 
 get_header(); ?>

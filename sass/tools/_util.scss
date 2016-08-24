@@ -7,3 +7,17 @@
 .logo {
   size: auto 55px;
 }
+
+.text--desktop {
+  display: none;
+
+  @media (--desktop) {
+    display: inline-block;
+  }
+}
+
+.text--mobile {
+  @media (--desktop) {
+    display: none;
+  }
+}
