@@ -1,36 +1,41 @@
-<?php
-/**
- 	* _UdyUX theme functions and definitions.
- 	*
- 	* @link https://developer.wordpress.org/themes/basics/theme-functions/
- 	*
- 	* @package _UdyUX
-	* If you're building a theme based on _UdyUX, use a find and replace
-	* to change '_udyux' to the name of your theme in all the template files.
-*/
+<?php #theme functions
+$rootDir = get_template_directory();
+
+// core functions
+require "{$rootDir}/inc/core-functions.php";
+// post types
+require "{$rootDir}/inc/post-types.php";
 
 
-// Include core functions.
-require get_template_directory() . '/inc/core-functions.php';
-// Include post types.
-require get_template_directory() . '/inc/post-types.php';
-
-
-# Enqueue main scripts and styles.
+## Enqueue main scripts and styles.
 function _udyux_main_assets() {
   // replace default wp jquery
   wp_deregister_script('jquery');
 
-  wp_register_script('jquery', 'https://code.jquery.com/jquery-3.1.0.slim.min.js', array(), '20160824', true);
+  wp_register_script('jquery', 'https://code.jquery.com/jquery-3.1.0.slim.min.js', array(), '3.1.0', true);
   wp_enqueue_script('jquery');
 
-  wp_register_script('_udyux-scripts', get_template_directory_uri() . '/js/scripts.js', array(), '20160824', true);
+  wp_register_script('_udyux-scripts', get_template_directory_uri() . '/js/scripts.js', array(), '1.0.0', true);
   wp_enqueue_script('_udyux-scripts');
 
   wp_enqueue_style( '_udyux-style', get_stylesheet_uri() );
 }
 add_action('wp_enqueue_scripts', '_udyux_main_assets');
 #/
+
+
+## add scripts for event post types
+function _udyux_event_assets() {
+  if ( get_post_type() == 'event' ) {
+    wp_register_script('_udyux-google-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp', array(), '3.x.x', true);
+    wp_enqueue_script('_udyux-google-maps');
+
+    wp_register_script('_udyux-event-scripts', get_template_directory_uri() . '/js/event-scripts.js', array(), '1.0.0', true);
+    wp_enqueue_script('_udyux-event-scripts');
+  }
+}
+add_action('wp_enqueue_scripts', '_udyux_event_assets');
+#
 
 
 ## Enqueue admin custom stylesheet through ACF
@@ -43,7 +48,7 @@ add_action( 'acf/input/admin_enqueue_scripts', '_udyux_admin_assets', 15 );
 #/
 
 
-# Add ACF General options page
+## Add ACF General options page
 // http://www.advancedcustomfields.com/resources/acf_add_options_page/
 if ( function_exists('acf_add_options_page') ) {
 	acf_add_options_page(array(

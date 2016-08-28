@@ -1,56 +1,84 @@
 <?php
 /**
- * The main template file.
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
+ * The template for displaying the homepage
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package _UdyUX
  */
+?>
 
-get_header(); ?>
+<? get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+  <header class="header header--frontpage" role="banner" style="background-image:url(<? the_field('home_background', 'options'); ?>)">
+  	<h1 class="header__title"><? the_field('home_banner', 'options'); ?></h1>
+  	<span class="header__lead"><svg class="util__icon"><use xlink:href="#caret"></use></svg></span>
+  </header>
 
-		<?php
-		if ( have_posts() ) :
+  <!-- activity -->
+  <section class="section activity">
+  	<h2 class="section__title"><? the_field('activity_title', 'options'); ?></h2>
 
-			if ( is_home() && ! is_front_page() ) : ?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
+  	<div class="row--md activity__row">
 
-			<?php
-			endif;
+  		<? if ( have_rows('activity_blocks', 'options') ) : while ( have_rows('activity_blocks', 'options') ) : the_row(); ?>
 
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+      <div class="activity__block row__item">
+  			<img class="activity__icon" src="<? the_sub_field('block_icon'); ?>" alt="<? the_sub_field('activity_title'); ?>"/>
+  			<h3 class="activity__title"><? the_sub_field('block_title'); ?></h3>
+  			<p class="activity__desc"><? the_sub_field('block_description'); ?></p>
+  		</div>
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+  		<? endwhile; endif; ?>
 
-			endwhile;
+  	</div>
+  </section>
 
-			the_posts_navigation();
+  <!-- latest articles and events -->
+  <section class="row">
+  	<!-- articles -->
+  	<aside class="row__item feed feed--news">
 
-		else :
+      <?php
+  		$the_articles = new WP_Query( array(
+  			'posts_per_page'	=> 3,
+  			'post_type'				=> 'article',
+  			'post_status' 		=> 'publish'
+  		) );
 
-			get_template_part( 'template-parts/content', 'none' );
+  		$c = 0;
+  		if ( $the_articles->have_posts() ): while ( $the_articles->have_posts() ) : $the_articles->the_post();
+        // first article's excerpt is 500 characters
+  			$max = ( $c == 0 ) ? 500 : 190;
+  			$c++;
+  		?>
 
-		endif; ?>
+			<article class="feed__item" style="background-image:url( <? echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?> )">
+				<h3 class="feed__title"><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
+				<p><? echo trim_excerpt( get_the_excerpt(), $max ); ?></p>
+			</article>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+  		<? endwhile; endif; wp_reset_query(); ?>
+  	</aside>
 
-<?php
-get_sidebar();
-get_footer();
+  	<!-- events -->
+  	<aside class="row__item feed feed--events">
+  		<?php
+  		$the_events = new WP_Query( array(
+  			'posts_per_page'	=> 3,
+  			'post_type'				=> 'event',
+  			'post_status' 		=> 'publish'
+  		) );
+
+  		if ( $the_events->have_posts() ): while ( $the_events->have_posts() ) : $the_events->the_post(); ?>
+
+			<article class="feed__item" style="background-image:url( <? echo wp_get_attachment_url( get_post_thumbnail_id($post->ID)); ?> )">
+				<h3 class="feed__title"><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
+				<p><? echo trim_excerpt( get_the_excerpt(), 350 ); ?></p>
+			</article>
+
+  		<? endwhile; endif; wp_reset_query(); ?>
+  	</aside>
+  </section>
+
+<? get_footer(); ?>
