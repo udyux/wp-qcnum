@@ -1,4 +1,3 @@
-<?php # get file head and nav
-
-get_template_part('partials/file', 'head');
-get_template_part('partials/shared', 'nav');
+<?php
+_udyux_get_layout('file', 'head');
+_udyux_get_partial('nav');

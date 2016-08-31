@@ -11,10 +11,7 @@
 
 <section id="post-<? the_ID(); ?>" <? post_class(); ?>>
 	<header class="entry-header">
-		<?php
-		$location = get_field( 'event_map' );
-		if( !empty($location) ):
-			$address = explode( ',', $location['address'] );?>
+
 
 			<div class="acf-map">
 				<div class="marker" data-lat="<? echo $location['lat']; ?>" data-lng="<? echo $location['lng']; ?>">

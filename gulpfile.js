@@ -95,7 +95,7 @@ gulp.task('css', function() {
 /* js minification
 -----------------------*/
 gulp.task('js', function() {
-	return gulp.src('./js/scripts.js')
+	return gulp.src('./js/*.js')
 		.pipe(plumber(function(err) {
 			var errMsg = err.toString();
 			if (beep) beep();
@@ -202,6 +202,14 @@ gulp.task('sync', function() {
 	browserSync.reload();
 });
 
+gulp.task('js-sync', function() {
+	browserSync.reload();
+});
+
+gulp.task('css-sync', function() {
+	browserSync.reload();
+});
+
 // set to default task
 gulp.task('default', ['build'], function () {
 	var browserSyncSettings = (settings.browserSync.useProxy) ? {
@@ -214,8 +222,8 @@ gulp.task('default', ['build'], function () {
 
 	browserSync.init(browserSyncSettings);
 
-  gulp.watch('js/scripts.js', ['js', 'sync']);
-  gulp.watch('sass/**/*.scss', ['css', 'sync']);
+  gulp.watch('js/scripts.js', ['js-sync']);
+  gulp.watch('sass/**/*.scss', ['css-sync']);
   gulp.watch('**/*.{html,php}', ['sync']);
 });
 

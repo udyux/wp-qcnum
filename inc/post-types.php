@@ -1,14 +1,9 @@
-<?php
-/**
- 	* _UdyUX custom post types
- 	*
- 	* @package _UdyUX
-*/
+<?php # custom post types #
 
-// Register custom post types
-function add_custom_post_types() {
+## Register custom post types
+function _udyux_custom_post_types() {
 
-	## article
+  // articles
 	$labelsArticle = array(
 		'name' => 'Chroniques',
 		'singular_name' => 'Chronique',
@@ -24,8 +19,7 @@ function add_custom_post_types() {
 		'parent_item_colon' => '',
 		'menu_name' => 'Chroniques'
 	);
-
-	$argArticle = array(
+	$argsArticle = array(
 		'labels' => $labelsArticle,
 		'public' => true,
 		'publicly_queryable' => true,
@@ -39,12 +33,9 @@ function add_custom_post_types() {
 		'menu_icon' => 'dashicons-media-document',
 		'supports' => array('title', 'thumbnail', 'editor', 'revisions')
 	);
+  register_post_type('article', $argsArticle);
 
-  register_post_type('article', $argArticle);
-  #/
-
-
-	## event
+	// events
 	$labelsEvent = array(
 		'name' => 'Événements',
 		'singular_name' => 'Événement',
@@ -60,8 +51,7 @@ function add_custom_post_types() {
 		'parent_item_colon' => '',
 		'menu_name' => 'Événements'
 	);
-
-	$argEvent = array(
+	$argsEvent = array(
 		'labels' => $labelsEvent,
 		'public' => true,
 		'publicly_queryable' => true,
@@ -75,8 +65,7 @@ function add_custom_post_types() {
 		'menu_icon' => 'dashicons-calendar-alt',
 		'supports' => array('title', 'thumbnail', 'editor', 'revisions')
 	);
-
-	register_post_type('event', $argEvent);
-  #/
+	register_post_type('event', $argsEvent);
 }
-add_action( 'init', 'add_custom_post_types' );
+add_action( 'init', '_udyux_custom_post_types' );
+#/
