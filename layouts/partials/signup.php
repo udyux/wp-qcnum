@@ -1,6 +1,4 @@
 <? # newsletter signup form #
-  if ($showSignup) :
-
   $signupNode = array(
     'home'  => $data,
     'title' => get_field('signup_title', 'options'),
@@ -9,19 +7,17 @@
   );
 ?>
 
-  <form class="signup <? echo $signupNode['home'] ? 'signup--home' : 'post__signup'; ?>">
-    <h4 class="signup__title"><? echo $signupNode['title']; ?></h4>
+<form class="signup <? if ($signupNode['home']) echo 'signup--home'; ?>">
+  <h4 class="signup__title"><? echo $signupNode['title']; ?></h4>
 
-    <? if (!$signupNode['home']): ?>
+  <? if (!$signupNode['home']): ?>
 
-      <p><? echo $signupNode['msg']; ?></p>
+    <p><? echo $signupNode['msg']; ?></p>
 
-    <? endif; ?>
+  <? endif; ?>
 
-    <fieldset class="signup__field">
-      <input id="signup_email" name="signup_email" class="form__input" type="email" placeholder="Votre courriel" autocomplete="email" spellcheck="false"/>
-      <button id="signup" class="form__button"><? echo $signupNode['label']; ?></button>
-    </fieldset>
-  </form>
-
-<? endif; ?>
+  <fieldset class="signup__field">
+    <input id="signup_email" name="signup_email" class="form__input" type="email" placeholder="Votre courriel" autocomplete="email" spellcheck="false"/>
+    <button id="signup" class="form__button"><? echo $signupNode['label']; ?></button>
+  </fieldset>
+</form>

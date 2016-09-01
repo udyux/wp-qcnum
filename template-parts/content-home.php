@@ -55,7 +55,7 @@
 
 			<article class="feed__item" style="background-image:url( <? echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?> )">
 				<h3 class="feed__title"><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
-				<p><? echo trim_excerpt( get_the_excerpt(), $max ); ?></p>
+				<p><? echo _udyux_trim_excerpt( get_the_excerpt(), $max ); ?></p>
 			</article>
 
 		<? endwhile; endif; wp_reset_query(); ?>
@@ -74,7 +74,7 @@
 
 			<article class="feed__item" style="background-image:url( <? echo wp_get_attachment_url( get_post_thumbnail_id($post->ID)); ?> )">
 				<h3 class="feed__title"><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
-				<p><? echo trim_excerpt( get_the_excerpt(), 350 ); ?></p>
+				<p><? echo _udyux_trim_excerpt( get_the_excerpt(), 350 ); ?></p>
 			</article>
 
 		<? endwhile; endif; wp_reset_query(); ?>

@@ -1,0 +1,44 @@
+/* post */
+
+.post {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  background-color: cc(bg);
+  @include clearfix;
+
+  &__content {
+    width: 70%;
+    padding: 0 4.5vw 4.5vw;
+  }
+
+  &__sidebar {
+    width: 30%;
+  }
+
+  &__title {
+    text-align: center;
+
+    &--event {
+      position: relative;
+      margin: 4.5vw 9vw;
+      color: black;
+      background-color: white;
+      font-family: fc(bold);
+      font-size: 36px;
+      overflow: hidden;
+
+      &::after {
+        content: '';
+        size: 100%;
+        absolute: top left;
+        mix-blend-mode: screen;
+        @include gradient(1,1);
+      }
+    }
+  }
+
+  &__meta {
+    padding: 2.25vw 4.5vw;
+  }
+}

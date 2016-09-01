@@ -1,0 +1,21 @@
+/* map */
+
+.map {
+  position: relative;
+  height: 100%;
+
+  &__marker {
+    padding: 1rem 0;
+  }
+
+  &__venue {
+    font-family: fc(bold);
+    font-size: 17px;
+    color: cc(primary);
+  }
+
+  &__address {
+    margin-top: .5rem;
+    color: cc(text);
+  }
+}

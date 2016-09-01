@@ -2,7 +2,7 @@
 
 .header {
   position: relative;
-  height: 35vh;
+  height: 35vw;
   color: cc(text,header);
   @include bgCover;
 
@@ -18,12 +18,12 @@
     max-height: 1080px;
 
     &::after {
-      background-image: linear-gradient(
-        to bottom,
-        cc(accent,.65) 40%,
-        cc(primary)
-      );
+      @include gradient(.65,1);
     }
+  }
+
+  &--map::after {
+    display: none;
   }
 
   &__title {

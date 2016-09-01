@@ -4,7 +4,7 @@
 
   <?
     $articles = new WP_Query(array(
-		  'post__not_in' 		=> array( $post->ID ),
+		  'post__not_in' 		=> array( get_the_ID() ),
 		  'posts_per_page'	=> 3,
 		  'post_type'				=> $data ?: 'article',
 		  'post_status' 		=> 'publish'
@@ -16,7 +16,7 @@
       'title'   => get_the_title(),
       'link'    => get_permalink(),
       'img'     => wp_get_attachment_url( get_post_thumbnail_id($post->ID) ),
-      'excerpt' => trim_excerpt(get_the_excerpt(), 200)
+      'excerpt' => _udyux_trim_excerpt(get_the_excerpt(), 200)
     ); ?>
 
 		<article class="postfeed__item" style="background-image:url( <? echo $currentNode['bgImg']; ?>);">

@@ -1,13 +1,13 @@
 <? # site-wide nav #
-$navNode = array(
-  'homeUrl' => home_url(),
-  'logo'    => get_field('logo', 'options')
-);
+  $navNode = array(
+    'homeUrl' => home_url(),
+    'logo'    => get_field('logo', 'options')
+  );
 ?>
 
 <nav class="nav" role="navigation">
 	<a href="<? echo $navNode['homeUrl']; ?>">
-		<img class="logo" src="<? $navNode['logo']; ?>" alt="québec numérique"/>
+		<img class="logo" src="<? echo $navNode['logo']; ?>" alt="québec numérique"/>
 	</a>
 
   <menu class="nav__menu">

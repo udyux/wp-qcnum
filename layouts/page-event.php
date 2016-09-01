@@ -1,10 +1,11 @@
 <? # event page template #
-  $eventNode = array(
-    'id'        => $post->ID,
-    'img'       => wp_get_attachment_url( get_post_thumbnail_id($post->ID) ),
+  $postNode = array(
+    'id'        => get_the_ID(),
+    'img'       => wp_get_attachment_url( get_post_thumbnail_id(get_the_id()) ),
     'title'     => get_the_title(),
-    'content'   => get_the_content(),
+    'content'   => _udyux_format_content( get_the_content() ),
     'map'       => get_field('map'),
+    'zoom'      => get_field('zoom'),
     'venue'     => get_field('venue'),
     'price'     => get_field('price'),
     'link'      => get_field('link'),
@@ -15,69 +16,63 @@
     'endTime'   => get_field('end_time')
   );
 
-  $titleImg   = !empty($eventNode['img']) ? $eventNode['img'] : get_template_directory_uri() . '/images/event_placeholder.jpg';
+  $titleImg   = !empty($postNode['img']) ? $postNode['img'] : get_template_directory_uri() . '/images/event_placeholder.jpg';
   $showSignup = get_field('show_signup');
-?>
 
-<article id="post-<? echo $eventNode['id']; ?>" class="post">
-  <header class="post__header">
+  if ( !empty($postNode['map']) ):
 
-    <?
-      if ( !empty($eventNode['map']) ):
+  $location = $postNode['map'];
+  $address = explode(',', $location['address']); ?>
 
-      $location = $eventNode['map'];
-      $address = explode(',', $location['address']); ?>
-
-      <div class="post__map map js-map">
-        <div class="map__marker" data-lat="<? echo $location['lat']; ?>" data-lng="<? echo $location['lng']; ?>">
-          <h4 class="map__venue"><? echo $eventNode['venue']; ?></h4>
-          <p class="map__address"><? echo $address[0] . ', ' . $address[1]; ?></p>
-        </div>
-      </div>
-
-    <? else: ?>
-
-      <div class="post__image" style="background-image:url(<? echo $titleImage; ?>)"></div>
-
-    <? endif; ?>
-
+  <header class="header header--map">
+    <div id="map" class="map"
+      data-lat="<? echo $location['lat']; ?>"
+      data-lng="<? echo $location['lng']; ?>"
+      data-zoom="<? echo $postNode['zoom']; ?>"
+      data-venue="<? echo $postNode['venue']; ?>"
+      data-address="<? echo "{$address[0]}, {$address[1]}"; ?>">
+    </div>
   </header>
 
-  <section class="post__content">
-    <h1 class="post__title"><? echo $eventNode['title']; ?></h1>
+  <? else: ?>
 
-    <div class="rte">
-      <? echo $eventNode['content']; ?>
-    </div>
+    <header class="header" style="background-image:url(<? echo $titleImage; ?>)"></header>
+
+  <? endif; ?>
+
+</header>
+
+<article id="post-<? echo $postNode['id']; ?>" class="post">
+  <section class="post__content">
+    <h1 class="post__title post__title--event"><? echo $postNode['title']; ?></h1>
+    <div class="rte js-post"><? echo $postNode['content']; ?></div>
   </section>
 
   <aside class="post__sidebar sidebar">
-    <p class="sidebar__meta">où</p>
-    <h2 class="sidebar__title"><? echo $eventNode['venue']; ?></h2>
-    <p class="sidebar__meta">quand</p>
-    <h3 class="sidebar__subtitle">
-      <? echo $eventNode['startDate']; if ( !empty($eventNode['startTime']) ) echo ' @ ' . $eventNode['startTime']; ?>
-    </h3>
+    <div class="post__meta">
+      <p class="sidebar__label">où</p>
+      <h2 class="sidebar__meta"><? echo $postNode['venue']; ?></h2>
 
-    <? if ( !empty($eventNode['endDate']) ): ?>
+      <p class="sidebar__label">quand</p>
 
-      <p class="sidebar__meta">&nbsp;&nbsp;&nbsp;au</p>
-      <h3 class="sidebar__subtitle">
-        <? echo $eventNode['endtDate']; if ( !empty($eventNode['endTime']) ) echo ' @ ' . $eventNode['endTime']; ?>
-      </h3>
+      <? if ( !empty($postNode['endDate']) ): ?>
 
-    <? endif; ?>
+        <h3 class="sidebar__meta">Commence le<br>&nbsp;&nbsp;<? echo $postNode['startDate']; if ( !empty($postNode['startTime']) ) echo ' @ ' . $postNode['startTime']; ?></h3>
+        <h3 class="sidebar__meta">Termine le<br>&nbsp;&nbsp;<? echo $postNode['endDate']; if ( !empty($postNode['endTime']) ) echo ' @ ' . $postNode['endTime']; ?></h3>
 
-    <? if ( !empty($eventNode['price']) ): ?>
+      <? endif; if ( !empty($postNode['price']) ): ?>
 
-      <p class="sidebar__meta"></p>
-      <h2 class="sidebar__title"><? echo $eventNode['price']; ?></h2>
+        <p class="sidebar__label">prix</p>
+        <h2 class="sidebar__meta"><? echo $postNode['price']; ?></h2>
 
-    <? endif; ?>
+      <? endif; if ( !empty($postNode['link']) ): ?>
 
-    <h4 class="sidebar__link"><a href="<? echo $eventNode['link']; ?>"><? echo $eventNode['linkLabel']; ?></a></h4>
+        <h4 class="sidebar__link"><a href="<? echo $postNode['link']; ?>"><? echo $postNode['linkLabel']; ?></a></h4>
 
-  	<? _udyux_get_partial('signup'); ?>
+      <? endif; ?>
+    </div>
+
+  	<? if ($showSignup) _udyux_get_partial('signup'); ?>
   </aside>
 </article>
 

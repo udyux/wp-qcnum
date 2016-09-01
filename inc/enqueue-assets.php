@@ -25,11 +25,11 @@ add_action('wp_enqueue_scripts', '_udyux_main_assets');
 ## add scripts for event post types
 function _udyux_event_assets() {
   if ( get_post_type() == 'event' ) {
-    wp_register_script('_udyux-google-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp', array(), '3.x.x', true);
-    wp_enqueue_script('_udyux-google-maps');
-
     wp_register_script('_udyux-event-scripts', get_template_directory_uri() . '/js/event-scripts.js', array(), '1.0.0', true);
     wp_enqueue_script('_udyux-event-scripts');
+    
+    wp_register_script('_udyux-google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD2IjP7p0YRO_X2zrtPdnIbCnay3RFXs8M&callback=initMap', array(), '3.x.x', true);
+    wp_enqueue_script('_udyux-google-maps');
   }
 }
 add_action('wp_enqueue_scripts', '_udyux_event_assets');

@@ -95,16 +95,16 @@ gulp.task('css', function() {
 /* js minification
 -----------------------*/
 gulp.task('js', function() {
-	return gulp.src('./js/*.js')
+	return gulp.src('./js/src/*.js')
 		.pipe(plumber(function(err) {
 			var errMsg = err.toString();
 			if (beep) beep();
 			if (notifier) notifier.notify({title: 'JavaScript', message: errMsg});
+      console.log(errMsg);
 		 	this.emit('end');
 		}))
 		.pipe(jshint())
 		.pipe(uglify())
-		.pipe(rename('scripts.min.js'))
 		.pipe(gulp.dest('./js/'));
 });
 
@@ -202,11 +202,11 @@ gulp.task('sync', function() {
 	browserSync.reload();
 });
 
-gulp.task('js-sync', function() {
+gulp.task('js-sync', ['js'], function() {
 	browserSync.reload();
 });
 
-gulp.task('css-sync', function() {
+gulp.task('css-sync', ['css'], function() {
 	browserSync.reload();
 });
 
@@ -222,13 +222,13 @@ gulp.task('default', ['build'], function () {
 
 	browserSync.init(browserSyncSettings);
 
-  gulp.watch('js/scripts.js', ['js-sync']);
+  gulp.watch('js/src/*.js', ['js-sync']);
   gulp.watch('sass/**/*.scss', ['css-sync']);
   gulp.watch('**/*.{html,php}', ['sync']);
 });
 
 
 gulp.task('dev', ['build'], function() {
-	gulp.watch('js/scripts.js', ['js']);
+	gulp.watch('js/src/*.js', ['js']);
 	gulp.watch('sass/**/*.scss', ['css']);
 });

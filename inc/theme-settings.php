@@ -1,5 +1,10 @@
 <?php # theme settings #
 
+## google maps api key for admin
+add_filter('acf/settings/google_api_key', function () {
+  return 'AIzaSyD2IjP7p0YRO_X2zrtPdnIbCnay3RFXs8M';
+});
+
 ## add theme supported features
 if ( !function_exists('_udyux_setup') ) {
   function _udyux_setup() {
@@ -21,25 +26,22 @@ if ( !function_exists('_udyux_setup') ) {
   }
 }
 add_action('after_setup_theme', '_udyux_setup');
-#/
 
 
 ## TinyMCE first line toolbar customizations and block element select options
 // http://wordpress.stackexchange.com/a/45824
-function _udyux_rte_allowed_tags($arr){
+function _udyux_rte_config($arr){
 	$arr['block_formats'] = 'Paragraph=p;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
 	return $arr;
 }
-add_filter('tiny_mce_before_init', '_udyux_rte_allowed_tags');
-#/
+add_filter('tiny_mce_before_init', '_udyux_rte_config');
 
 
-## Set custom excerpt length
-function _udyux_custom_excerpt_length($length) {
-	return 80;
+## unwrap img tags in post content
+function _udyux_unwrap_images($content){
+  return preg_replace('/<p>(\s*)(<img .* \/>)(\s*)<\/p>/iU', '\2', $content);
 }
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
-#/
+add_filter('the_content', '_udyux_unwrap_images');
 
 
 ## Set media width
@@ -47,4 +49,14 @@ function _udyux_content_width() {
 	$GLOBALS['content_width'] = apply_filters('_udyux_content_width', 640 );
 }
 add_action( 'after_setup_theme', '_udyux_content_width', 0 );
-#/
+
+
+## Set default posts sort order in admin
+function _udyux_admin_post_order($wp_query) {
+  global $pagenow;
+  if ( is_admin() && 'edit.php' == $pagenow && !isset($_GET['orderby'])) {
+    $wp_query->set( 'orderby', 'date' );
+    $wp_query->set( 'order', 'DSC' );
+  }
+}
+add_filter('pre_get_posts', '_udyux_admin_post_order');

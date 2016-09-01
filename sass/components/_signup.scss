@@ -1,0 +1,18 @@
+/* signup */
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  height: 30vw;
+  padding: 4.5vw;
+  background-color: cc(accent);
+
+  &--home {
+    display: block;
+    height: auto;
+    background-image: url(images/form_bg.jpg);
+    @include bgCover;
+  }
+}

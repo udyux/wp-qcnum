@@ -34,3 +34,9 @@ function _udyux_get_partial($name, $data = false) {
   $path = get_template_directory();
   require "{$path}/layouts/partials/{$name}.php";
 }
+
+
+## format content
+function _udyux_format_content($content) {
+  return apply_filters( 'the_content', wpautop($content) );
+}

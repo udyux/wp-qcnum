@@ -10,11 +10,11 @@
 	}
 }
 
-@mixin gradient {
+@mixin gradient($a1:.65,$a2:.75) {
   background-image: linear-gradient(
     to bottom,
-    cc(accent,.65) 40%,
-    cc(primary,.65)
+    cc(accent,$a1) 40%,
+    cc(primary,$a2)
   );
 }
 

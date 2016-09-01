@@ -6,26 +6,10 @@
   height: auto;
 }
 
-.acf-postbox.seamless .acf-fields {
-	display: flex !important;
-	flex-wrap: wrap;
-	justify-content: space-between;
+.acf-field-message .acf-label {
+  display: none;
 }
 
-.acf-postbox.seamless .acf-fields .acf-field {
-  width: 100%;
-	margin-top: 0;
-  margin-right: 0;
-  margin-top: 2rem;
-  margin-left: 0;
+.acf-postbox h2 > span {
+  opacity: 0;
 }
-
-.acf-postbox.seamless .acf-fields .acf-field-repeater .acf-field {
-  margin-top: 0;
-}
-
-.acf-postbox.seamless .acf-tab-wrap {
-  width: 100%;
-}
-
-.acf-fields:after {display: none}

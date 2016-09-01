@@ -1,0 +1,57 @@
+/* rte */
+
+.rte {
+  line-height: 1.2;
+  font-size: 17px;
+
+	p+p {
+		margin-bottom: .5rem;
+	}
+
+  ul {
+      list-style: none;
+  }
+
+  li {
+      position: relative;
+      padding-top: .5em;
+      margin-top: .5em;
+      padding-left: 1em;
+
+      &::before {
+        content: '\2022';
+        line-height: 1.5em;
+        vertical-align: middle;
+        absolute: top .35em left;
+        color: cc(primary);
+      }
+
+      &:first-child {
+        margin-top: 1.5em;
+      }
+  }
+
+	.section__subtitle + ul li:first-child {
+		margin-top: 0;
+	}
+
+  strong {
+    font-family: fc(bold);
+  }
+
+  em {
+    font-style: italic;
+  }
+
+	img {
+    margin: 0 1.75rem 2.25rem;
+    max-width: 40%;
+    height: auto;
+
+    + p,
+		+ ul,
+		+ .section__subtitle {
+      margin-top: 2.25rem;
+    }
+  }
+}

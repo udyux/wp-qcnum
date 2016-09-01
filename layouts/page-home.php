@@ -2,13 +2,14 @@
   $homeNode = array(
     'banner'        => get_field('home_banner', 'options'),
     'bgImg'         => get_field('home_background', 'options'),
-    'activityTitle' => get_field('activity_title', 'options')
+    'activityTitle' => get_field('activity_title', 'options'),
+    'clientsTitle'  => get_field('clients_title', 'options')
   );
 
   $showSignup = get_field('show_signup', 'options');
 ?>
 
-<header class="header header--homepage" role="banner" style="background-image:url(<? $homeNode['bgImg']; ?>)">
+<header class="header header--homepage" role="banner" style="background-image:url(<? echo $homeNode['bgImg']; ?>)">
   <h1 class="header__title"><? echo $homeNode['banner']; ?></h1>
 </header>
 
@@ -55,14 +56,14 @@
         'title'   => get_the_title(),
         'link'    => get_permalink(),
         'img'     => wp_get_attachment_url( get_post_thumbnail_id($post->ID) ),
-        'excerpt' => trim_excerpt(get_the_excerpt(), $max)
+        'excerpt' => _udyux_trim_excerpt(get_the_excerpt(), $max)
       );
 
       $max = $c == 0 ? 500 : 190;
       $c++; ?>
 
       <article class="feed__item" style="background-image:url(<? echo $currentNode['img']; ?>)">
-        <h3 class="feed__title"><a href="<? $currentNode['link']; ?>"><? echo $currentNode['title']; ?></a></h3>
+        <h3 class="feed__title"><a href="<? echo $currentNode['link']; ?>"><? echo $currentNode['title']; ?></a></h3>
         <p><? echo $currentNode['excerpt']; ?></p>
       </article>
 
@@ -86,11 +87,11 @@
         'title'   => get_the_title(),
         'link'    => get_permalink(),
         'img'     => wp_get_attachment_url( get_post_thumbnail_id($post->ID) ),
-        'excerpt' => trim_excerpt(get_the_excerpt(), 350)
+        'excerpt' => _udyux_trim_excerpt(get_the_excerpt(), 350)
       ); ?>
 
       <article class="feed__item" style="background-image:url(<? echo $currentNode['img']; ?>)">
-        <h3 class="feed__title"><a href="<? $currentNode['link']; ?>"><? echo $currentNode['title']; ?></a></h3>
+        <h3 class="feed__title"><a href="<? echo $currentNode['link']; ?>"><? echo $currentNode['title']; ?></a></h3>
         <p><? echo $currentNode['excerpt']; ?></p>
       </article>
 
@@ -99,4 +100,4 @@
   </aside>
 </section>
 
-<? _udyux_get_partial('signup', true); ?>
+<? if ($showSignup) _udyux_get_partial('signup', true); ?>
