@@ -1,0 +1,82 @@
+/* feed */
+
+.feed {
+  height: 50vw;
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    position: relative;
+    border: 5px solid white;
+  }
+
+  &__image {
+    size: 100%;
+    absolute: top left;
+    filter: grayscale(.6);
+    @include bgCover;
+  }
+
+  &__content {
+    position: relative;
+    size: 100%;
+    padding: 2.25vw;
+    display: flex;
+    flex-direction: column;
+    color: cc(text,alt);
+    font-size: 18px;
+    z-index: 1;
+  }
+
+  &__title {
+    font-family: fc(display);
+    font-size: 26px;
+  }
+
+  &--news {
+    border: solid white;
+    border-width: 5px 0 5px 5px;
+
+    .feed__item {
+      size: 50%;
+
+      .feed__title {
+        text-align: right;
+      }
+
+      &:first-child {
+        width: 100%;
+        text-align: left;
+
+        .feed__title {
+          margin-bottom: 2.25vw;
+        }
+
+        .feed__content {
+          justify-content: flex-start;
+          align-items: flex-start;
+        }
+      }
+    }
+
+    .feed__content {
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+
+  &--events {
+    display: block;
+    border: solid white;
+    border-width: 5px 5px 5px 0;
+
+    .feed__item {
+      height: calc(100% / 3);
+    }
+
+    .feed__content {
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+}

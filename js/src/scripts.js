@@ -29,7 +29,19 @@
     };
   });
 
+  // TODO: convert hex to rgba
+  // colorize feed items
+  Scripts.enqueue(function bgColors() {
+    var colors = ['hsla(205,92.5%,42%,.9)','hsla(205,92.5%,47%,.9)','hsla(205,92.5%,47.5%,.9)','hsla(165,100%,40%,.9)','hsla(165,100%,42.5%,.9)','hsla(165,100%,45%,.9)'];
+    [].forEach.call(document.querySelectorAll('.js-color'), function(node) {
+      var i = Math.random()*colors.length>>0;
+      node.style.backgroundColor = colors[i];
+      colors.splice(i,1);
+    });
+  });
 
+
+  // generic event handlers
   Scripts.enqueue(function genericHandlers() {
     [].forEach.call(document.querySelectorAll('.a[href^="#"], form button'), function(node) {
       node.addEventListener('click', function(e) {
@@ -37,20 +49,6 @@
       });
     });
   });
-
-  // Scripts.enqueue(function cleanPosts() {
-  //   [].forEach.call(document.querySelectorAll('.js-post'), function(node) {
-  //   	[].forEach.call(node.children ,function(child) {
-  //   		if (!child.children.length && !child.innerText.length) node.removeChild(child);
-  //   	});
-  //
-  //     [].forEach.call(node.querySelectorAll('img'), function(image) {
-  //       var parentNode = image.parentNode;
-  //       parentNode.style.zIndex = 1;
-  //       parentNode.style.margin = 0;
-  //     });
-  //   });
-  // });
 
 
   $(document).ready(Scripts.execute);

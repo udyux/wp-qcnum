@@ -9,10 +9,42 @@
   padding: 4.5vw;
   background-color: cc(accent);
 
+  &__title {
+    font-family: fc(display);
+    font-size: 36px;
+    color: cc(text,alt);
+    text-transform: uppercase;
+  }
+
+  &__input {
+    width: 250px;
+    padding: .5rem 1rem;
+    margin: 0 4.5vw;
+    color: cc(text,input);
+    background-color: cc(bg,input);
+    border-radius: 3px;
+  }
+
+  &__button {
+    width: 125px;
+    padding: .5rem 1rem;
+    color: cc(text,button);
+    background-color: cc(bg,button);
+    font-family: fc(bold);
+    border-radius: 3px;
+  }
+
   &--home {
-    display: block;
+    flex-direction: row;
+    align-items: center;
     height: auto;
     background-image: url(images/form_bg.jpg);
     @include bgCover;
+
+    .signup__title {
+      color: cc(primary);
+    }
+
+
   }
 }

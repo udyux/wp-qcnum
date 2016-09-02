@@ -17,7 +17,7 @@
   <? endif; ?>
 
   <fieldset class="signup__field">
-    <input id="signup_email" name="signup_email" class="form__input" type="email" placeholder="Votre courriel" autocomplete="email" spellcheck="false"/>
-    <button id="signup" class="form__button"><? echo $signupNode['label']; ?></button>
+    <input id="signup_email" name="signup_email" class="signup__input" type="email" placeholder="Votre courriel" autocomplete="email" spellcheck="false"/>
+    <button id="signup" class="signup__button"><? echo $signupNode['label']; ?></button>
   </fieldset>
 </form>
