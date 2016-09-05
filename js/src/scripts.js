@@ -29,14 +29,25 @@
     };
   });
 
-  // TODO: convert hex to rgba
-  // colorize feed items
-  Scripts.enqueue(function bgColors() {
-    var colors = ['hsla(205,92.5%,42%,.9)','hsla(205,92.5%,47%,.9)','hsla(205,92.5%,47.5%,.9)','hsla(165,100%,40%,.9)','hsla(165,100%,42.5%,.9)','hsla(165,100%,45%,.9)'];
-    [].forEach.call(document.querySelectorAll('.js-color'), function(node) {
-      var i = Math.random()*colors.length>>0;
-      node.style.backgroundColor = colors[i];
-      colors.splice(i,1);
+
+  // switch hover background-color on feed articles
+  //background-color: cc(accent,alt,.8);
+  Scripts.enqueue(function hoverBackgrounds() {
+    var thisTime = 'rgba(43,191,147,.8)';
+    var nextTime = 'rgba(38,133,226,.85)';
+
+    var switchBg = function() {
+      var tmp = thisTime;
+      thisTime = nextTime;
+      nextTime = tmp;
+
+      var target = this.querySelector('.js-bgColorTarget');
+
+      target.style.backgroundColor = tmp;
+    };
+
+    [].forEach.call(document.querySelectorAll('.js-bgColor'), function(node) {
+      node.addEventListener('mouseover', switchBg);
     });
   });
 

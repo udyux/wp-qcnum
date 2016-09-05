@@ -16,6 +16,8 @@
     'endTime'   => get_field('end_time')
   );
 
+  $startDate = empty($postNode['startDate']) ?: _udyux_format_date($postNode['startDate']);
+
   $titleImg   = !empty($postNode['img']) ? $postNode['img'] : get_template_directory_uri() . '/images/event_placeholder.jpg';
   $showSignup = get_field('show_signup');
 
@@ -55,15 +57,43 @@
 
       <p class="sidebar__label">quand</p>
 
-      <? if ( !empty($postNode['endDate']) ): ?>
+      <? if ( $startDate && !empty($postNode['endDate']) ): $endDate = _udyux_format_date($postNode['endDate']); ?>
 
-        <h3 class="sidebar__meta">Commence le<br>&nbsp;&nbsp;<? echo $postNode['startDate']; if ( !empty($postNode['startTime']) ) echo ' @ ' . $postNode['startTime']; ?></h3>
-        <h3 class="sidebar__meta">Termine le<br>&nbsp;&nbsp;<? echo $postNode['endDate']; if ( !empty($postNode['endTime']) ) echo ' @ ' . $postNode['endTime']; ?></h3>
+        <h3 class="sidebar__meta">
+          <u class="sidebar__underline"><span class="sidebar__submeta">Commence</span></u><br>
+
+          <?
+            echo "{$startDate['day']} le {$startDate['date']} {$startDate['month']}, {$startDate['year']}";
+            if ( !empty($postNode['startTime']) ) echo "<br>@ {$postNode['startTime']}";
+          ?>
+
+        </h3>
+
+        <h3 class="sidebar__meta">
+          <u class="sidebar__underline"><span class="sidebar__submeta">Termine </span></u><br>
+
+          <?
+            echo "{$endDate['day']} le {$endDate['date']} {$endDate['month']}, {$endDate['year']}";
+            if ( !empty($postNode['endTime']) ) echo "<br>@ {$postNode['endTime']}";
+          ?>
+
+        </h3>
+
+      <? elseif ($startDate): ?>
+
+        <h3 class="sidebar__meta">
+
+          <?
+            echo "{$startDate['day']} le {$startDate['date']} {$startDate['month']}, {$startDate['year']}";
+            if ( !empty($postNode['startTime']) ) echo "<br>@ {$postNode['startTime']}";
+          ?>
+
+        </h3>
 
       <? endif; if ( !empty($postNode['price']) ): ?>
 
         <p class="sidebar__label">prix</p>
-        <h2 class="sidebar__meta"><? echo $postNode['price']; ?></h2>
+        <h2 class="sidebar__meta"><? echo preg_match("/gratuit/i", $postNode['price']) ? $postNode['price'] : "{$postNode['price']}$"; ?></h2>
 
       <? endif; if ( !empty($postNode['link']) ): ?>
 

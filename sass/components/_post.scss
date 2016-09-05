@@ -33,7 +33,7 @@
         size: 100%;
         absolute: top left;
         mix-blend-mode: screen;
-        @include gradient(1,1);
+        @include gradient(1,1,0);
       }
     }
   }

@@ -5,13 +5,15 @@ $colors: (
 	default: (
     text: #262626,
 		bg: #fff,
+    border: #fff,
     primary: #2685e2,
     alt: #66c5f4,
     accent: #00eeb2
 	),
   alt: (
     text: #fff,
-    bg: #262626
+    bg: #262626,
+    accent: #2bbf93
   ),
   sidebar: (
     bg: #eaf1f2,

@@ -54,21 +54,22 @@
 
       if ( $articles->have_posts() ): while ( $articles->have_posts() ) : $articles->the_post();
 
-      $max = $c == 0 ? 500 : 400;
+      $max = $c == 0 ? 750 : 350;
       $c++;
 
       $currentNode = array(
         'title'   => get_the_title(),
         'link'    => get_permalink(),
         'img'     => wp_get_attachment_url( get_post_thumbnail_id($post->ID) ),
-        'excerpt' => _udyux_trim_excerpt(get_the_excerpt(), $max)
+        'excerpt' => _udyux_get_excerpt($max)
       ); ?>
 
       <article class="feed__item">
         <div class="feed__image" style="background-image:url(<? echo $currentNode['img']; ?>)"></div>
-        <div class="feed__content js-color">
-          <h3 class="feed__title"><a href="<? echo $currentNode['link']; ?>"><? echo $currentNode['title']; ?></a></h3>
-          <p><? echo $currentNode['excerpt']; ?></p>
+        <div class="feed__content js-bgColor">
+          <h3 class="feed__title"><? echo $currentNode['title']; ?></h3>
+          <p class="feed__excerpt"><span class="feed__overlay js-bgColorTarget"></span><? echo $currentNode['excerpt']; ?></p>
+          <a class="feed__link" href="<? echo $currentNode['link']; ?>"></a>
         </div>
       </article>
 
@@ -92,14 +93,15 @@
         'title'   => get_the_title(),
         'link'    => get_permalink(),
         'img'     => wp_get_attachment_url( get_post_thumbnail_id($post->ID) ),
-        'excerpt' => _udyux_trim_excerpt(get_the_excerpt(), 400)
+        'excerpt' => _udyux_get_excerpt(350)
       ); ?>
 
       <article class="feed__item">
         <div class="feed__image" style="background-image:url(<? echo $currentNode['img']; ?>)"></div>
-        <div class="feed__content js-color">
-          <h3 class="feed__title"><a href="<? echo $currentNode['link']; ?>"><? echo $currentNode['title']; ?></a></h3>
-          <p><? echo $currentNode['excerpt']; ?></p>
+        <div class="feed__content js-bgColor">
+          <h3 class="feed__title"><? echo $currentNode['title']; ?></h3>
+          <p class="feed__excerpt"><span class="feed__overlay js-bgColorTarget"></span><? echo $currentNode['excerpt']; ?></p>
+          <a class="feed__link" href="<? echo $currentNode['link']; ?>"></a>
         </div>
       </article>
 

@@ -16,7 +16,7 @@
       'title'   => get_the_title(),
       'link'    => get_permalink(),
       'img'     => wp_get_attachment_url( get_post_thumbnail_id($post->ID) ),
-      'excerpt' => _udyux_trim_excerpt(get_the_excerpt(), 200)
+      'excerpt' => _udyux_get_excerpt(200)
     ); ?>
 
 		<article class="postfeed__item" style="background-image:url( <? echo $currentNode['bgImg']; ?>);">

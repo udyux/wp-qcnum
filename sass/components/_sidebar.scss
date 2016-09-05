@@ -14,6 +14,15 @@
     line-height: 1.2;
   }
 
+  &__underline {
+    color: cc(primary);
+  }
+
+  &__submeta {
+    color: cc(text);
+    font-family: fc(regular);
+  }
+
   &__label {
     position: relative;
     font-family: fc(display);

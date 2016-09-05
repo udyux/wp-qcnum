@@ -6,8 +6,9 @@
   justify-content: center;
   align-items: stretch;
   height: 30vw;
-  padding: 4.5vw;
+  padding: 0 4.5vw;
   background-color: cc(accent);
+  text-align: center;
 
   &__title {
     font-family: fc(display);
@@ -17,27 +18,41 @@
   }
 
   &__input {
-    width: 250px;
-    padding: .5rem 1rem;
-    margin: 0 4.5vw;
+    padding: .75rem 1rem;
+    margin-right: .5rem;
     color: cc(text,input);
     background-color: cc(bg,input);
     border-radius: 3px;
+    text-align: center;
   }
 
   &__button {
-    width: 125px;
-    padding: .5rem 1rem;
+    padding: .75rem 1rem;
     color: cc(text,button);
     background-color: cc(bg,button);
     font-family: fc(bold);
     border-radius: 3px;
   }
 
+  &__message {
+    position: relative;
+    margin: 1rem 1rem 2rem;
+    padding-top: 1rem;
+
+    &::before {
+      content: '';
+      size: 30% 3px;
+      absolute: top left 50%;
+      transform: translate(-50%,-50%);
+      background-color: cc(border,.65);
+    }
+  }
+
   &--home {
     flex-direction: row;
     align-items: center;
     height: auto;
+    padding: 4.5vw;
     background-image: url(images/form_bg.jpg);
     @include bgCover;
 
@@ -45,6 +60,10 @@
       color: cc(primary);
     }
 
-
+    .signup__input {
+      width: 300px;
+      margin: 0 4.5vw;
+      text-align: left;
+    }
   }
 }

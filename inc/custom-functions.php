@@ -1,27 +1,5 @@
 <?php # custom functions #
 
-## Trim string to passed number of characters
-// If > 2 sentences remove incomplete last sentence else trim last incomplete word
-function _udyux_trim_excerpt($excerpt, $max_chars) {
-	$trimmed = substr($excerpt, 0, $max_chars);
-	$sentences = explode( '.', $trimmed);
-	$count = count($sentences);
-
-	if ($count > 1) {
-		unset($sentences[$count-1]);
-		return implode('.', $sentences) . '.';
-	}
-
-	else {
-		$single_sentence = implode('.', $sentences) . '.';
-		$words = explode(' ', $single_sentence);
-		$wordcount = count($words);
-		unset($words[$wordcount-1]);
-		return implode (' ', $words) . '...';
-	}
-}
-
-
 ## get layout
 function _udyux_get_layout($type, $name) {
   $path = get_template_directory();
@@ -36,7 +14,33 @@ function _udyux_get_partial($name, $data = false) {
 }
 
 
-## format content
+## format content with p tags
 function _udyux_format_content($content) {
   return apply_filters( 'the_content', wpautop($content) );
+}
+
+
+## format date to french string
+function _udyux_format_date($dmy) {
+  setlocale(LC_TIME, "fr_FR");
+  list($d,$m,$y) = explode('/', $dmy);
+
+  return array(
+    'day' => strftime('%A', mktime(0,0,0,$m,$d,$y)),
+    'date' => $d,
+    'month' => strftime('%B', mktime(0,0,0,$m,$d,$y)),
+    'year' => $y
+  );
+}
+
+
+## get trimmed excerpt from content
+function _udyux_get_excerpt($charlength) {
+  $excerpt = preg_replace(" (\[.*?\])",'', get_the_content());
+  $excerpt = strip_tags($excerpt);
+  $excerpt = substr($excerpt, 0, $charlength);
+  $excerpt = substr($excerpt, 0, strripos($excerpt, " "));
+  $excerpt = trim(preg_replace( '/\s+/', ' ', $excerpt));
+  $excerpt = "{$excerpt} &mldr;";
+  return $excerpt;
 }

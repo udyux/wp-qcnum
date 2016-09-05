@@ -7,17 +7,17 @@
   );
 ?>
 
-<form class="signup <? if ($signupNode['home']) echo 'signup--home'; ?>">
+<form class="signup<? if ($signupNode['home']) echo ' signup--home'; ?>">
   <h4 class="signup__title"><? echo $signupNode['title']; ?></h4>
 
   <? if (!$signupNode['home']): ?>
 
-    <p><? echo $signupNode['msg']; ?></p>
+    <p class="signup__message"><? echo $signupNode['msg']; ?></p>
 
   <? endif; ?>
 
-  <fieldset class="signup__field">
+  <fieldset>
     <input id="signup_email" name="signup_email" class="signup__input" type="email" placeholder="Votre courriel" autocomplete="email" spellcheck="false"/>
-    <button id="signup" class="signup__button"><? echo $signupNode['label']; ?></button>
+    <button id="signup" class="signup__button"><? echo $signupNode['home'] ? $signupNode['label'] : 'GO!'; ?></button>
   </fieldset>
 </form>
