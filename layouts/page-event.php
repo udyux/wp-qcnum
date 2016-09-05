@@ -1,7 +1,7 @@
 <? # event page template #
   $postNode = array(
     'id'        => get_the_ID(),
-    'img'       => wp_get_attachment_url( get_post_thumbnail_id(get_the_id()) ),
+    'img'       => wp_get_attachment_url( get_post_thumbnail_id($post->ID) ),
     'title'     => get_the_title(),
     'content'   => _udyux_format_content( get_the_content() ),
     'map'       => get_field('map'),
@@ -10,21 +10,21 @@
     'price'     => get_field('price'),
     'link'      => get_field('link'),
     'linkLabel' => get_field('link_label'),
-    'startDate' => get_field('start_date'),
+    'startDate' => _udyux_format_date( get_field('start_date') ),
     'startTime' => get_field('start_time'),
-    'endDate'   => get_field('end_date'),
+    'endDate'   => _udyux_format_date( get_field('end_date') ),
     'endTime'   => get_field('end_time')
   );
 
-  $startDate = empty($postNode['startDate']) ?: _udyux_format_date($postNode['startDate']);
-
-  $titleImg   = !empty($postNode['img']) ? $postNode['img'] : get_template_directory_uri() . '/images/event_placeholder.jpg';
-  $showSignup = get_field('show_signup');
-
-  if ( !empty($postNode['map']) ):
+  list($startDate, $endDate) = array($postNode['startDate'], $postNode['endDate']);
 
   $location = $postNode['map'];
-  $address = explode(',', $location['address']); ?>
+
+  $titleImage = $postNode['img'] ?: get_template_directory_uri() . '/images/event_placeholder.jpg';
+  $showSignup = get_field('show_signup');
+?>
+
+<? if ( !empty($location) ): $address = explode(',', $location['address']); ?>
 
   <header class="header header--map">
     <div id="map" class="map"
@@ -42,12 +42,10 @@
 
   <? endif; ?>
 
-</header>
-
 <article id="post-<? echo $postNode['id']; ?>" class="post">
   <section class="post__content">
     <h1 class="post__title post__title--event"><? echo $postNode['title']; ?></h1>
-    <div class="rte js-post"><? echo $postNode['content']; ?></div>
+    <div class="rte js-cleanPost"><? echo $postNode['content']; ?></div>
   </section>
 
   <aside class="post__sidebar sidebar">
@@ -57,10 +55,10 @@
 
       <p class="sidebar__label">quand</p>
 
-      <? if ( $startDate && !empty($postNode['endDate']) ): $endDate = _udyux_format_date($postNode['endDate']); ?>
+      <? if ($startDate && $endDate): ?>
 
+        <p class="sidebar__submeta">Commence</p>
         <h3 class="sidebar__meta">
-          <u class="sidebar__underline"><span class="sidebar__submeta">Commence</span></u><br>
 
           <?
             echo "{$startDate['day']} le {$startDate['date']} {$startDate['month']}, {$startDate['year']}";
@@ -69,8 +67,8 @@
 
         </h3>
 
+        <p class="sidebar__submeta">Termine </p>
         <h3 class="sidebar__meta">
-          <u class="sidebar__underline"><span class="sidebar__submeta">Termine </span></u><br>
 
           <?
             echo "{$endDate['day']} le {$endDate['date']} {$endDate['month']}, {$endDate['year']}";

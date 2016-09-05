@@ -8,19 +8,28 @@
   background-color: cc(bg,sidebar);
 
   &__meta {
-    margin-top: .5rem;
+    margin-top: .4rem;
     margin-left: 1rem;
     font-size: 18px;
     line-height: 1.2;
   }
 
-  &__underline {
-    color: cc(primary);
-  }
-
   &__submeta {
-    color: cc(text);
+    position: relative;
+    font-size: 18px;
+    margin-top: .8rem;
+    margin-left: 1rem;
     font-family: fc(regular);
+
+    &::before {
+      content: '';
+      size: 0;
+      absolute: top 50% left -1rem;
+      transform: translateY(-50%);
+      border-top: .4rem solid transparent;
+      border-bottom: .4rem solid transparent;
+      border-left: .5rem solid cc(primary);
+    }
   }
 
   &__label {
@@ -39,10 +48,6 @@
       size: 100% 3px;
       background-color: cc(border,sidebar,.2);
       border-radius: 2px;
-    }
-
-    &--group {
-      margin-top: .75rem;
     }
   }
 

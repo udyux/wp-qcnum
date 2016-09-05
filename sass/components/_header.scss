@@ -13,35 +13,47 @@
     @include gradient;
   }
 
-  &--homepage {
+  &__title {
+    width: 100%;
+    absolute: top 50% left;
+    transform: translateY(-50%);
+    font-family: fc(display);
+    font-size: 32px;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 1;
+
+    @media (--tablet) {
+      font-size: 60px;
+    }
+
+    @media (--desktop) {
+      font-size: 72px;
+    }
+  }
+
+  &--home {
     height: 100vh;
     max-height: 1080px;
 
     &::after {
       @include gradient(.65,1);
     }
+
+    .header__title {
+      font-size: 60px;
+
+      @media (--tablet) {
+        font-size: 90px;
+      }
+
+      @media (--desktop) {
+        font-size: 120px;
+      }
+    }
   }
 
   &--map::after {
     display: none;
-  }
-
-  &__title {
-    width: 100%;
-    absolute: top 50% left;
-    transform: translateY(-50%);
-    font-family: fc(display);
-    font-size: 60px;
-    text-transform: uppercase;
-    text-align: center;
-    z-index: 1;
-
-    @media (--tablet) {
-      font-size: 90px;
-    }
-
-    @media (--desktop) {
-      font-size: 120px;
-    }
   }
 }

@@ -5,15 +5,35 @@
   display: flex;
   align-items: stretch;
   background-color: cc(bg);
-  @include clearfix;
 
   &__content {
-    width: 70%;
     padding: 0 4.5vw 4.5vw;
+    @include flex;
+
+    &--article {
+      .rte p:first-of-type {
+        position: relative;
+        margin: 4.5vw;
+        color: black;
+        background-color: white;
+        font-family: fc(bold);
+        font-size: 26px;
+        text-align: justify;
+        overflow: hidden;
+
+        &::after {
+          content: '';
+          size: 100%;
+          absolute: top left;
+          mix-blend-mode: screen;
+          @include gradient(1,1,0);
+        }
+      }
+    }
   }
 
   &__sidebar {
-    width: 30%;
+    width: calc(100% / 3);
   }
 
   &__title {

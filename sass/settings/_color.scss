@@ -17,7 +17,8 @@ $colors: (
   ),
   sidebar: (
     bg: #eaf1f2,
-    border: #9c9c9c
+    border: #9c9c9c,
+    sub: #565656
   ),
   header: (
     text: #fff
@@ -31,9 +32,5 @@ $colors: (
 	input: (
     text: #363636,
     bg: #fff
-	),
-  button: (
-    text: #fff,
-    bg: #2685e2
-  )
+	)
 );

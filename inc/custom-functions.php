@@ -22,15 +22,19 @@ function _udyux_format_content($content) {
 
 ## format date to french string
 function _udyux_format_date($dmy) {
-  setlocale(LC_TIME, "fr_FR");
-  list($d,$m,$y) = explode('/', $dmy);
+  if ( !empty($dmy) ) {
+    setlocale(LC_TIME, "fr_FR");
+    list($d,$m,$y) = explode('/', $dmy);
 
-  return array(
-    'day' => strftime('%A', mktime(0,0,0,$m,$d,$y)),
-    'date' => $d,
-    'month' => strftime('%B', mktime(0,0,0,$m,$d,$y)),
-    'year' => $y
-  );
+    return array(
+      'day' => strftime('%A', mktime(0,0,0,$m,$d,$y)),
+      'date' => (int)$d,
+      'month' => strftime('%B', mktime(0,0,0,$m,$d,$y)),
+      'year' => $y
+    );
+  }
+
+  else return false;
 }
 
 

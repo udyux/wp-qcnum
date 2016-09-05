@@ -105,6 +105,9 @@ gulp.task('js', function() {
 		}))
 		.pipe(jshint())
 		.pipe(uglify())
+    .pipe(rename({
+      suffix: '.min'
+    }))
 		.pipe(gulp.dest('./js/'));
 });
 

@@ -17,15 +17,16 @@
   }
 
   &__content {
-    transition: background-color 275ms $ease;
+    transition: background-color 225ms $ease;
     position: relative;
     size: 100%;
     padding: 2.25vw;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     color: cc(text,alt);
+    background-color: cc(bg,alt,.6);
     z-index: 1;
-    background-color: cc(bg,alt,.4);
   }
 
   &__title {
@@ -36,7 +37,7 @@
   }
 
   &__excerpt {
-    transition: opacity 275ms $ease;
+    transition: opacity 225ms $ease;
     font-family: fc(regular);
     opacity: 0;
 
@@ -76,14 +77,12 @@
         }
 
         .feed__content {
-          justify-content: flex-start;
           align-items: flex-start;
         }
       }
     }
 
     .feed__content {
-      justify-content: space-between;
       align-items: flex-end;
 
       &:hover {
@@ -108,5 +107,9 @@
         background-color: cc(bg,alt,0);
       }
     }
+  }
+
+  &--post {
+    height: 20vw;
   }
 }

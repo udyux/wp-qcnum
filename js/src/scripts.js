@@ -30,6 +30,16 @@
   });
 
 
+  // clean posts of empty tags
+  Scripts.enqueue(function cleanPosts() {
+    var postContent = document.querySelector('.js-cleanPost');
+    postContent.innerHTML = postContent.innerHTML.replace(/&nbsp;/g, '');
+    [].forEach.call(postContent.children, function(node) {
+      if (!node.innerHTML) node.parentNode.removeChild(node);
+    });
+  });
+
+
   // switch hover background-color on feed articles
   //background-color: cc(accent,alt,.8);
   Scripts.enqueue(function hoverBackgrounds() {

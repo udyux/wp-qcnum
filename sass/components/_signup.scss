@@ -18,20 +18,33 @@
   }
 
   &__input {
+    transition: box-shadow 225ms $ease;
     padding: .75rem 1rem;
     margin-right: .5rem;
     color: cc(text,input);
     background-color: cc(bg,input);
+    box-shadow: 0 0 0 2px cc(border);
     border-radius: 3px;
     text-align: center;
+
+    &:focus {
+      box-shadow: 0 0 0 2px cc(primary);
+    }
   }
 
   &__button {
+    transition: all 225ms $ease;
     padding: .75rem 1rem;
-    color: cc(text,button);
-    background-color: cc(bg,button);
+    color: cc(text,alt);
+    background-color: cc(bg,0);
+    border: 2px solid cc(border);
     font-family: fc(bold);
     border-radius: 3px;
+
+    &:hover {
+      color: cc(accent);
+      background-color: cc(bg);
+    }
   }
 
   &__message {
@@ -64,6 +77,17 @@
       width: 300px;
       margin: 0 4.5vw;
       text-align: left;
+    }
+
+    .signup__button {
+      color: cc(primary);
+      background-color: cc(primary,0);
+      border: 2px solid cc(primary);
+
+      &:hover {
+        color: cc(text,alt);
+        background-color: cc(primary);
+      }
     }
   }
 }

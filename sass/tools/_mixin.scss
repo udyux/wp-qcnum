@@ -24,6 +24,12 @@
 	background-position: $pos;
 }
 
+@mixin flex($grow:1,$shrink:0,$basis:0) {
+  flex-grow: $grow;
+  flex-shrink: $shrink;
+  flex-basis: $basis;
+}
+
 @mixin longWordWrap {
 	overflow-wrap: break-word;
 	word-wrap: break-word;
