@@ -10,8 +10,6 @@
 		  'post_status' 		=> 'publish'
 	  ));
 
-    $isEvent = $data == 'event';
-
 	  if ( $posts->have_posts() ): while ( $posts->have_posts() ) : $posts->the_post();
 
     $currentNode = array(
@@ -19,28 +17,28 @@
       'link'      => get_permalink(),
       'img'       => wp_get_attachment_url( get_post_thumbnail_id($post->ID) ),
       'excerpt'   => _udyux_get_excerpt(200),
-      'startDate' => _udyux_format_date( get_field('start_date') ),
-      'endDate'   => _udyux_format_date( get_field('end_date') )
+      'start_date' => _udyux_format_date( get_field('start_date') ),
+      'end_date'   => _udyux_format_date( get_field('end_date') )
     );
 
-    list($startDate, $endDate) = array($currentNode['startDate'], $currentNode['endDate']); ?>
+    list($start_date, $end_date) = array($currentNode['start_date'], $currentNode['end_date']); ?>
 
     <article class="feed__item row__item">
-      <div class="feed__image" style="background-image:url(<? echo $currentNode['img']; ?>)"></div>
+      <div class="feed__image" style="background-image:url(<?= $currentNode['img']; ?>)"></div>
       <div class="feed__content js-bgColor">
         <h3 class="feed__title">
 
-          <? if ($startDate && $endDate): ?>
-            <sup><? echo "{$startDate['date']} {$startDate['month']} &mdash; {$endDate['date']} {$endDate['month']} {$endDate['year']}"; ?></sup><br>
-          <? elseif ($startDate): ?>
-            <sup><? echo "{$startDate['date']} {$startDate['month']} {$startDate['year']}"; ?></sup><br>
+          <? if ($start_date && $end_date): ?>
+            <sup><?= "{$start_date['date']} {$start_date['month']} &mdash; {$end_date['date']} {$end_date['month']} {$end_date['year']}"; ?></sup><br>
+          <? elseif ($start_date): ?>
+            <sup><?= "{$start_date['date']} {$start_date['month']} {$start_date['year']}"; ?></sup><br>
           <? endif; ?>
 
-          <? echo $currentNode['title']; ?>
+          <?= $currentNode['title']; ?>
 
         </h3>
-        <p class="feed__excerpt"><span class="feed__overlay js-bgColorTarget"></span><? echo $currentNode['excerpt']; ?></p>
-        <a class="feed__link" href="<? echo $currentNode['link']; ?>"></a>
+        <p class="feed__excerpt"><span class="feed__overlay js-bgColorTarget"></span><?= $currentNode['excerpt']; ?></p>
+        <a class="feed__link" href="<?= $currentNode['link']; ?>"></a>
       </div>
     </article>
 

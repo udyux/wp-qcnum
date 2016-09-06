@@ -1,21 +1,21 @@
 <? # site-wide footer #
   $footerNode = array(
-    'homeUrl'     => home_url(),
-    'logo'        => get_field('logo', 'options'),
-    'msgTitle'    => get_field('footer_message_title', 'options'),
-    'msg'         => get_field('footer_message', 'options'),
-    'socialTitle' => get_field('social_title', 'options')
+    'home_url'      => home_url(),
+    'logo'          => get_field('logo', 'options'),
+    'message_title' => get_field('footer_message_title', 'options'),
+    'message'           => get_field('footer_message', 'options'),
+    'social_title'   => get_field('social_title', 'options')
   );
 ?>
 
 <footer class="footer">
-  <a href="<? echo $footerNode['homeUrl']; ?>" rel="home">
-    <img class="logo" src="<? echo $footerNode['logo']; ?>"/>
+  <a href="<?= $footerNode['home_url']; ?>" rel="home">
+    <img class="logo" src="<?= $footerNode['logo']; ?>"/>
   </a>
 
   <div class="footer__message">
-    <h6 class="footer__title"><? echo $footerNode['msgTitle']; ?></h6>
-    <p><? echo $footerNode['msg']; ?></p>
+    <h6 class="footer__title"><?= $footerNode['message_title']; ?></h6>
+    <p><?= $footerNode['message']; ?></p>
   </div>
 
   <div>
@@ -24,7 +24,7 @@
   </div>
 
   <div>
-    <h6 class="footer__title"><? echo $footerNode['socialTitle']; ?></h6>
+    <h6 class="footer__title"><?= $footerNode['social_title']; ?></h6>
     <ul>
 
       <?
@@ -36,8 +36,8 @@
         ); ?>
 
         <li class="footer__social">
-          <a href="<? echo $currentNode['link']; ?>" target="_blank">
-            <svg class="icon"><use xlink:href="#<? echo $currentNode['icon']; ?>"></use></svg>
+          <a href="<?= $currentNode['link']; ?>" target="_blank">
+            <svg class="icon"><use xlink:href="#<?= $currentNode['icon']; ?>"></use></svg>
           </a>
         </li>
 
@@ -46,5 +46,5 @@
     </ul>
   </div>
 
-  <h5 class="footer__copyright"><? echo date('Y'); ?> &copy; Québec Numérique</h5>
+  <h5 class="footer__copyright"><?= date('Y'); ?> &copy; Québec Numérique</h5>
 </footer>

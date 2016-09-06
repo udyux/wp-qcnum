@@ -14,6 +14,26 @@ function _udyux_get_partial($name, $data = false) {
 }
 
 
+## get trimmed excerpt from content
+function _udyux_get_excerpt($charlength) {
+  $excerpt = preg_replace(" (\[.*?\])",'', get_the_content());
+  $excerpt = strip_tags($excerpt);
+  $excerpt = substr($excerpt, 0, $charlength);
+  $excerpt = substr($excerpt, 0, strripos($excerpt, " "));
+  $excerpt = trim(preg_replace( '/\s+/', ' ', $excerpt));
+  $excerpt = "{$excerpt} &mldr;";
+  return $excerpt;
+}
+
+
+## get google maps link with query
+function _udyux_get_map_link($string) {
+	$string = preg_replace('/\s+/', ' ', $string);
+	$string = strtolower(preg_replace('/\s/', '+', $string));
+	return "https://www.google.ca/maps/place/{$string}";
+}
+
+
 ## format content with p tags
 function _udyux_format_content($content) {
   return apply_filters( 'the_content', wpautop($content) );
@@ -35,16 +55,4 @@ function _udyux_format_date($dmy) {
   }
 
   else return false;
-}
-
-
-## get trimmed excerpt from content
-function _udyux_get_excerpt($charlength) {
-  $excerpt = preg_replace(" (\[.*?\])",'', get_the_content());
-  $excerpt = strip_tags($excerpt);
-  $excerpt = substr($excerpt, 0, $charlength);
-  $excerpt = substr($excerpt, 0, strripos($excerpt, " "));
-  $excerpt = trim(preg_replace( '/\s+/', ' ', $excerpt));
-  $excerpt = "{$excerpt} &mldr;";
-  return $excerpt;
 }

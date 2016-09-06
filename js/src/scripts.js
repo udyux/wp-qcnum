@@ -33,10 +33,14 @@
   // clean posts of empty tags
   Scripts.enqueue(function cleanPosts() {
     var postContent = document.querySelector('.js-cleanPost');
-    postContent.innerHTML = postContent.innerHTML.replace(/&nbsp;/g, '');
-    [].forEach.call(postContent.children, function(node) {
-      if (!node.innerHTML) node.parentNode.removeChild(node);
-    });
+
+    if (postContent) {
+      postContent.innerHTML = postContent.innerHTML.replace(/&nbsp;/g, ' ');
+
+      [].forEach.call(postContent.children, function(node) {
+        if (!node.innerHTML && node.tagName !== 'IMG') node.parentNode.removeChild(node);
+      });
+    }
   });
 
 

@@ -1,13 +1,13 @@
 <? # site-wide nav #
   $navNode = array(
-    'homeUrl' => home_url(),
+    'home_url' => home_url(),
     'logo'    => get_field('logo', 'options')
   );
 ?>
 
 <nav class="nav" role="navigation">
-	<a href="<? echo $navNode['homeUrl']; ?>">
-		<img class="logo" src="<? echo $navNode['logo']; ?>" alt="québec numérique"/>
+	<a href="<?= $navNode['home_url']; ?>">
+		<img class="logo" src="<?= $navNode['logo']; ?>" alt="québec numérique"/>
 	</a>
 
   <menu class="nav__menu">
@@ -21,7 +21,7 @@
       ); ?>
 
       <li class="nav__link">
-        <a href="<? echo $currentNode['link']; ?>"><? echo $currentNode['label']; ?></a>
+        <a href="<?= $currentNode['link']; ?>"><?= $currentNode['label']; ?></a>
       </li>
 
     <? endwhile; endif; ?>
