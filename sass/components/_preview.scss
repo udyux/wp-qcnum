@@ -1,0 +1,41 @@
+/* preview */
+
+.preview {
+  display: flex;
+  align-items: stretch;
+
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+    background-color: cc(bg,sidebar);
+
+    .preview__title {
+      background-color: cc(accent,.65);
+    }
+  }
+
+  &__image {
+    position: relative;
+    width: 30%;
+    height: 20vw;
+    @include bgCover;
+  }
+
+  &__title {
+    size: 100%;
+    padding: 2.25vw;
+    absolute: top left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: cc(text,alt);
+    background-color: cc(primary,.65);
+    text-align: center;
+    font-family: fc(display);
+    font-size: 32px;
+  }
+
+  &__excerpt {
+    padding: 2.25vw;
+    @include flex(1);
+  }
+}

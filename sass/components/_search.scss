@@ -1,0 +1,51 @@
+/*------------------
+  search
+------------------*/
+
+.search {
+  display: inline-block;
+  position: relative;
+  margin-left: 1.75rem;
+
+  &__input {
+    transition: width 275ms $ease;
+    width: 0;
+    padding-bottom: 2px;
+    color: cc(text,alt);
+    border-bottom: 2px solid cc(border);
+    overflow: hidden;
+
+    &::-webkit-input-placeholder {
+      color: cc(text,alt,.6);
+    }
+
+    &::-moz-placeholder {
+      color: cc(text,alt,.6);
+    }
+
+    &:-ms-input-placeholder {
+      color: cc(text,alt,.6);
+    }
+
+    &:focus {
+      width: 180px;
+
+      & ~ .search__submit {
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &__icon {
+    size: 25px;
+    transform: translateY(20%);
+    fill: cc(text,alt);
+  }
+
+  &__submit {
+    display: block;
+    size: 25px;
+    absolute: top right;
+    pointer-events: none;
+  }
+}

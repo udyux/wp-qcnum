@@ -19,15 +19,20 @@
     text-transform: uppercase;
   }
 
+  &__field {
+    display: flex;
+  }
+
   &__input {
     transition: box-shadow 225ms $ease;
-    padding: .75rem 1rem;
+    padding: .75rem 0;
     margin-right: .5rem;
     color: cc(text,input);
     background-color: cc(bg,input);
     box-shadow: 0 0 0 2px cc(border);
     border-radius: 3px;
     text-align: center;
+    @include flex;
 
     &:focus {
       box-shadow: 0 0 0 2px cc(primary);
@@ -39,7 +44,7 @@
     padding: .75rem 1rem;
     color: cc(text,alt);
     background-color: cc(bg,0);
-    border: 2px solid cc(border);
+    box-shadow: 0 0 0 2px cc(border);
     font-family: fc(bold);
     border-radius: 3px;
 
@@ -78,13 +83,14 @@
     .signup__input {
       width: 300px;
       margin: 0 4.5vw;
+      padding: .75rem 1rem;
       text-align: left;
     }
 
     .signup__button {
       color: cc(primary);
       background-color: cc(primary,0);
-      border: 2px solid cc(primary);
+      box-shadow: 0 0 0 2px cc(primary);
 
       &:hover {
         color: cc(text,alt);

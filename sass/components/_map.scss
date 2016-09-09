@@ -7,6 +7,7 @@
   height: 100%;
 
   &__marker {
+    position: relative;
     padding: 1rem 0;
   }
 
@@ -19,5 +20,11 @@
   &__address {
     margin-top: .5rem;
     color: cc(text);
+  }
+
+  &__link {
+    display: block;
+    size: 100%;
+    absolute: top left;
   }
 }

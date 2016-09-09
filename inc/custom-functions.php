@@ -8,9 +8,9 @@ function _udyux_get_layout($type, $name) {
 
 
 ## get partial
-function _udyux_get_partial($name, $data = false) {
+function _udyux_get_partial($type, $name) {
   $path = get_template_directory();
-  require "{$path}/layouts/partials/{$name}.php";
+  require "{$path}/layouts/partials/{$type}-{$name}.php";
 }
 
 

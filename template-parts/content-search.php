@@ -16,15 +16,11 @@
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
 			<?php _udyux_posted_on(); ?>
-		</div><!-- .entry-meta -->
+		</div>
 		<?php endif; ?>
-	</header><!-- .entry-header -->
+	</header>
 
 	<div class="entry-summary">
 		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-
-	<footer class="entry-footer">
-		<?php _udyux_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-## -->
+	</div>
+</article>

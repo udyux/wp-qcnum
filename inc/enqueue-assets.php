@@ -15,7 +15,7 @@ add_action('wp_enqueue_scripts', '_udyux_replace_jquery');
 function _udyux_main_assets() {
   wp_enqueue_style( '_udyux-style', get_stylesheet_uri() );
 
-  wp_register_script('_udyux-scripts', get_template_directory_uri() . '/js/scripts.min.js', array(), 'http://udy.io', true);
+  wp_register_script('_udyux-scripts', get_template_directory_uri() . '/js/scripts.min.js', array(), '1', true);
   wp_enqueue_script('_udyux-scripts');
 }
 add_action('wp_enqueue_scripts', '_udyux_main_assets');
@@ -25,7 +25,7 @@ add_action('wp_enqueue_scripts', '_udyux_main_assets');
 ## add scripts for event post types
 function _udyux_event_assets() {
   if ( get_post_type() == 'event' ) {
-    wp_register_script('_udyux-event-scripts', get_template_directory_uri() . '/js/event-scripts.min.js', array(), '1.0.0', true);
+    wp_register_script('_udyux-event-scripts', get_template_directory_uri() . '/js/event-scripts.min.js', array(), '1', true);
     wp_enqueue_script('_udyux-event-scripts');
 
     wp_register_script('_udyux-google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD2IjP7p0YRO_X2zrtPdnIbCnay3RFXs8M&callback=initMap', array(), '3.x.x', true);

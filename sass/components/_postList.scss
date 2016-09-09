@@ -1,0 +1,10 @@
+/* post list */
+
+.postList {
+  &__nav {
+    padding: 1.5rem 4.5vw;
+    color: cc(text,alt);
+    background-color: cc(bg,alt);
+    font-size: 18px;
+  }
+}

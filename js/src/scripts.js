@@ -73,6 +73,10 @@
         e.preventDefault();
       });
     });
+
+    document.getElementById('search-submit').addEventListener('click', function() {
+      document.getElementById('search-form').submit();
+    });
   });
 
 

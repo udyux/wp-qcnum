@@ -149,16 +149,21 @@ var initMap = (function() {
     var div = document.createElement('div');
     var h4 = document.createElement('h4');
     var p = document.createElement('p');
+    var a = document.createElement('a');
 
     div.className = 'map__marker';
     h4.className = 'map__venue';
     p.className = 'map__address';
+    a.className = 'map__link';
 
     h4.innerHTML = mapNode.dataset.venue;
     p.innerHTML = mapNode.dataset.address;
+    a.href = mapNode.dataset.link;
+    a.target = '_blank';
 
     div.appendChild(h4);
     div.appendChild(p);
+    div.appendChild(a);
 
     return div;
   };
