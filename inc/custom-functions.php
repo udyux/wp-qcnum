@@ -2,8 +2,6 @@
 
 ## get layout
 function _udyux_get_layout() {
-  $path = get_template_directory();
-
   $pages = array(
     'home'    => is_front_page(),
     'article' => get_post_type() === 'article' && is_single(),
@@ -24,8 +22,8 @@ function _udyux_get_layout() {
   _udyux_get_partial('main', 'nav');
   _udyux_get_partial('main', 'header');
 
-  require "{$path}/layouts/{$page}.php";
-  
+  require get_template_directory() . "/layouts/{$page}.php";
+
   _udyux_get_partial('main', 'footer');
   _udyux_get_partial('file', 'footer');
 }
@@ -33,8 +31,7 @@ function _udyux_get_layout() {
 
 ## get partial
 function _udyux_get_partial($type, $name) {
-  $path = get_template_directory();
-  require "{$path}/layouts/partials/{$type}-{$name}.php";
+  require get_template_directory() . "/layouts/partials/{$type}-{$name}.php";
 }
 
 
