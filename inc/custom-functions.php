@@ -1,14 +1,40 @@
 <?php # custom functions #
 
 ## get layout
-function _udyux_get_layout($type, $name) {
-  require get_template_directory() . "{$path}/layouts/{$type}-{$name}.php";
+function _udyux_get_layout() {
+  $path = get_template_directory();
+
+  $pages = array(
+    'home'    => is_front_page(),
+    'article' => get_post_type() === 'article' && is_single(),
+    'event'   => get_post_type() === 'event' && is_single(),
+    'archive' => is_archive() || is_search()
+  );
+
+  foreach ($pages as $this_page => $is) {
+    if ($is) {
+      $page = $this_page;
+      break;
+    }
+  }
+
+  $page = $page ?: '404';
+
+  _udyux_get_partial('file', 'header');
+  _udyux_get_partial('main', 'nav');
+  _udyux_get_partial('main', 'header');
+
+  require "{$path}/layouts/{$page}.php";
+  
+  _udyux_get_partial('main', 'footer');
+  _udyux_get_partial('file', 'footer');
 }
 
 
 ## get partial
 function _udyux_get_partial($type, $name) {
-  require get_template_directory() . "{$path}/layouts/partials/{$type}-{$name}.php";
+  $path = get_template_directory();
+  require "{$path}/layouts/partials/{$type}-{$name}.php";
 }
 
 

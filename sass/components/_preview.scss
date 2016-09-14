@@ -16,7 +16,7 @@
   &__image {
     position: relative;
     width: 30%;
-    height: 20vw;
+    height: 25vw;
     filter: grayscale(.6);
     @include bgCover;
   }
@@ -36,7 +36,7 @@
   }
 
   &__excerpt {
-    padding: 2.25vw;
+    padding: 2.25vw 4.5vw 2.25vw 2.25vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,6 +58,10 @@
 
     b {
       font-family: fc(regular);
+    }
+
+    p+p {
+      margin-top: .5rem;
     }
   }
 }

@@ -4,7 +4,6 @@
   $date    = get_the_date();
   $link    = get_permalink();
   $excerpt = _udyux_get_excerpt(1000);
-  $img     = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
 
   $author = array(
     'name' => get_the_author(),
@@ -12,7 +11,7 @@
   );
 
   $post_type = get_post_type();
-  $featured  = $img ?: get_field("{$post_type}_header", 'options');
+  $featured  = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ?: get_field("{$post_type}_header", 'options');
 ?>
 
 <article id="post-<?= $currentNode['id']; ?>" class="preview">
@@ -23,7 +22,8 @@
     <p><?= $excerpt; ?></p>
 
     <div class="preview__meta">
-      <p>Publié par <a href="<?= $author['link']; ?>"><?= $author['name']; ?></a> le <b><?= $date; ?></b></p>
+      <p>Par <a href="<?= $author['link']; ?>"><?= $author['name']; ?></a></p>
+      <p>Le <b><?= $date; ?></b></p>
     </div>
   </div>
 </article>

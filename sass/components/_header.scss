@@ -7,17 +7,18 @@
   height: 35vw;
   color: cc(text,header);
 
+  &::after {
+    content: '';
+    size: 100%;
+    absolute: top left;
+    @include gradient;
+  }
+
   &__image {
     size: 100%;
     absolute: top left;
+    filter: grayscale(.4);
     @include bgCover;
-
-    &::after {
-      content: '';
-      size: 100%;
-      absolute: top left;
-      @include gradient;
-    }
   }
 
   &__title {

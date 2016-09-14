@@ -1,9 +1,10 @@
 <? # archive no results #
-  $message = is_search() ?
-    ":(<br>on n'a rien trouver pour votre recherche" :
-    ":(<br>quelque chose qu'on a pas prévu c'est produit.<br>retournez en arrière et gardez ça secret!";
+  $type = _udyux_page_is();
+  $message = get_field("{$type}_none", 'options');
+  $title = get_field('title_none', 'options');
 ?>
 
 <div class="archive__none">
-  <h5 class="archive__message"><?= $message; ?></h5>
+  <h6 class="archive__message"><?= $title; ?></h6>
+  <p><?= $message; ?></p>
 </div>
