@@ -1,4 +1,4 @@
-<? # site-wide footer #
+<? # main footer #
   $home_url      = home_url();
   $logo          = get_field('logo', 'options');
   $message_title = get_field('footer_message_title', 'options');
@@ -18,7 +18,21 @@
 
   <div>
     <h6 class="footer__title">Plan du site</h6>
-    <?// TODO: add footer sitemap?>
+    <ul>
+
+      <?
+        if ( have_rows('footer_sitemap', 'options') ) : while ( have_rows('footer_sitemap', 'options') ) : the_row();
+
+        $link  = get_sub_field('link');
+        $label = get_sub_field('label'); ?>
+
+        <li>
+          <a href="<?= $link; ?>"><?= $label; ?></a>
+        </li>
+
+      <? endwhile; endif; ?>
+
+    </ul>
   </div>
 
   <div>

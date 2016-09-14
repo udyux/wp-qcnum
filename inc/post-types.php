@@ -31,7 +31,7 @@ function _udyux_custom_post_types() {
 		'hierarchical' => true,
 		'menu_position' => 20,
 		'menu_icon' => 'dashicons-media-document',
-		'supports' => array('title', 'thumbnail', 'editor', 'revisions', 'trackbacks')
+		'supports' => array('author', 'title', 'thumbnail', 'editor', 'revisions', 'trackbacks')
 	);
   register_post_type('article', $argsArticle);
 
@@ -63,7 +63,7 @@ function _udyux_custom_post_types() {
 		'hierarchical' => true,
 		'menu_position' => 20,
 		'menu_icon' => 'dashicons-calendar-alt',
-		'supports' => array('title', 'thumbnail', 'editor', 'revisions', 'trackbacks')
+		'supports' => array('author', 'title', 'thumbnail', 'editor', 'revisions', 'trackbacks')
 	);
 	register_post_type('event', $argsEvent);
 }

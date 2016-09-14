@@ -1,4 +1,4 @@
-<? # site-wide nav #
+<? # main nav #
   $home_url = home_url();
   $logo     = get_field('logo', 'options');
 ?>

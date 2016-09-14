@@ -111,39 +111,41 @@ var initMap = (function() {
 
   var mapNode = document.getElementById('map');
 
-  var position = {
-    lat: parseFloat(mapNode.dataset.lat),
-    lng: parseFloat(mapNode.dataset.lng)
-  };
+  if (mapNode) {
+    var position = {
+      lat: parseFloat(mapNode.dataset.lat),
+      lng: parseFloat(mapNode.dataset.lng)
+    };
 
-  var map = new google.maps.Map(mapNode, {
-    center: position,
-    styles: mapStyles,
-		zoomControl: true,
-		scrollwheel: false,
-    scaleControl: false,
-    mapTypeControl: false,
-    zoom: parseFloat(mapNode.dataset.zoom),
-		zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_BOTTOM}
-  });
+    var map = new google.maps.Map(mapNode, {
+      center: position,
+      styles: mapStyles,
+  		zoomControl: true,
+  		scrollwheel: false,
+      scaleControl: false,
+      mapTypeControl: false,
+      zoom: parseFloat(mapNode.dataset.zoom),
+  		zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_BOTTOM}
+    });
 
-  var infowindow = new google.maps.InfoWindow({
-    content: getInfoWindow()
-  });
+    var infowindow = new google.maps.InfoWindow({
+      content: getInfoWindow()
+    });
 
-  var marker = new google.maps.Marker({
-    map: map,
-    position: position,
-    animation: google.maps.Animation.DROP
-  });
+    var marker = new google.maps.Marker({
+      map: map,
+      position: position,
+      animation: google.maps.Animation.DROP
+    });
 
-  marker.addListener('click', function() {
-    infowindow.open(map, marker);
-    if (!this.moved) {
-      map.panBy(0,-50);
-      this.moved = true;
-    }
-  });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+      if (!this.moved) {
+        map.panBy(0,-50);
+        this.moved = true;
+      }
+    });
+  }
 
   function getInfoWindow() {
     var div = document.createElement('div');

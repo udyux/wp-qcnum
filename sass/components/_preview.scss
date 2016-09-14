@@ -1,15 +1,15 @@
 /* preview */
 
 .preview {
+  position: relative;
   display: flex;
   align-items: stretch;
 
   &:nth-child(even) {
-    flex-direction: row-reverse;
     background-color: cc(bg,sidebar);
 
     .preview__title {
-      background-color: cc(accent,.65);
+      background-color: cc(accent,.8);
     }
   }
 
@@ -17,18 +17,19 @@
     position: relative;
     width: 30%;
     height: 20vw;
+    filter: grayscale(.6);
     @include bgCover;
   }
 
   &__title {
-    size: 100%;
+    size: 30% 100%;
     padding: 2.25vw;
     absolute: top left;
     display: flex;
     justify-content: center;
     align-items: center;
     color: cc(text,alt);
-    background-color: cc(primary,.65);
+    background-color: cc(primary,.8);
     text-align: center;
     font-family: fc(display);
     font-size: 32px;
@@ -36,6 +37,27 @@
 
   &__excerpt {
     padding: 2.25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
     @include flex(1);
+  }
+
+  &__meta {
+    margin-top: 2.25vw;
+
+    a {
+      font-family: fc(bold);
+      color: cc(primary);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    b {
+      font-family: fc(regular);
+    }
   }
 }

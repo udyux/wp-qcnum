@@ -64,11 +64,13 @@
   }
 
   img {
+    display: inline-block;
     margin: 1.75rem 2.25rem;
-    max-width: 40%;
+    width: 40%;
     height: auto;
 
-    &.alignleft {
+    &.alignleft,
+    &.alignnone {
       margin-left: 0;
     }
 

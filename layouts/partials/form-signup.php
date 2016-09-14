@@ -1,5 +1,5 @@
 <? # newsletter signup form #
-  $home  = is_front_page();
+  $home  = _udyux_page_is('home');
   $title = get_field('signup_title', 'options');
   $msg   = get_field('signup_message', 'options');
   $label = get_field('signup_label', 'options');

@@ -1,10 +1,22 @@
 /* post list */
 
-.postList {
+.archive {
   &__nav {
+    display: flex;
+    justify-content: space-between;
     padding: 1.5rem 4.5vw;
-    color: cc(text,alt);
+    color: cc(text,footer);
     background-color: cc(bg,alt);
+    font-family: fc(regular);
     font-size: 18px;
+
+    a:hover {
+      color: cc(text,alt);
+      text-decoration: underline;
+    }
+  }
+
+  &__none {
+    
   }
 }

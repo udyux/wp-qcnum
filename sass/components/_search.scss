@@ -13,6 +13,7 @@
     padding-bottom: 2px;
     color: cc(text,alt);
     border-bottom: 2px solid cc(border);
+    text-align: center;
     overflow: hidden;
 
     &::-webkit-input-placeholder {
@@ -27,8 +28,9 @@
       color: cc(text,alt,.6);
     }
 
-    &:focus {
-      width: 180px;
+    &:focus,
+    &:valid {
+      width: 160px;
 
       & ~ .search__submit {
         pointer-events: auto;
@@ -47,5 +49,6 @@
     size: 25px;
     absolute: top right;
     pointer-events: none;
+    z-index: 1;
   }
 }

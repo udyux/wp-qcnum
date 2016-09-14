@@ -1,14 +1,10 @@
 <? # home page layout #
-  $home_banner     = get_field('home_banner', 'options');
-  $home_background = get_field('home_background', 'options');
-  $activity_title  = get_field('activity_title', 'options');
-  $clients_title   = get_field('clients_title', 'options');
-  $show_signup     = get_field('show_signup', 'options');
+  $title          = get_field('home_banner', 'options');
+  $header         = get_field('home_background', 'options');
+  $activity_title = get_field('activity_title', 'options');
+  $clients_title  = get_field('clients_title', 'options');
+  $show_signup    = get_field('show_signup', 'options');
 ?>
-
-<header class="header header--home" role="banner" style="background-image:url(<?= $home_background; ?>)">
-  <h1 class="header__title "><?= $home_banner; ?></h1>
-</header>
 
 <section class="section activity">
   <h2 class="section__title"><?= $activity_title; ?></h2>
