@@ -33,6 +33,9 @@
 <section class="row">
   <!-- articles -->
   <aside class="row__item feed feed--news">
+    <div class="feed__header">
+      <h3 class="feed__type">chroniques</h3>
+    </div>
 
     <?
       $articles = new WP_Query(array(
@@ -56,9 +59,10 @@
 
       <article class="feed__item">
         <div class="feed__image" style="background-image:url(<?= $featured; ?>)"></div>
-        <div class="feed__content js-bgColor">
+
+        <div class="feed__content">
           <h3 class="feed__title"><?= $title; ?></h3>
-          <p class="feed__excerpt"><span class="feed__overlay js-bgColorTarget"></span><?= $excerpt; ?></p>
+          <p class="feed__excerpt"><span class="feed__overlay"></span><?= $excerpt; ?></p>
           <a class="feed__link" href="<?= $link; ?>"></a>
         </div>
       </article>
@@ -69,6 +73,9 @@
 
   <!-- events -->
   <aside class="row__item feed feed--events">
+    <div class="feed__header">
+      <h3 class="feed__type">évènements</h3>
+    </div>
 
     <?
       $events = new WP_Query( array(
@@ -89,7 +96,8 @@
 
       <article class="feed__item">
         <div class="feed__image" style="background-image:url(<?= $featured; ?>)"></div>
-        <div class="feed__content js-bgColor">
+
+        <div class="feed__content">
           <h3 class="feed__title">
 
             <? if ($start_date && $end_date): ?>
@@ -101,7 +109,7 @@
             <?= $title; ?>
 
           </h3>
-          <p class="feed__excerpt"><span class="feed__overlay js-bgColorTarget"></span><?= $excerpt; ?></p>
+          <p class="feed__excerpt"><span class="feed__overlay"></span><?= $excerpt; ?></p>
           <a class="feed__link" href="<?= $link; ?>"></a>
         </div>
       </article>

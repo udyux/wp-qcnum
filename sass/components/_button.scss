@@ -1,0 +1,32 @@
+/* button */
+
+.button {
+  transition: all 225ms $ease;
+  padding: .75rem 1rem;
+  color: cc(text,alt);
+  background-color: cc(bg,0);
+  box-shadow: 0 0 0 2px cc(border);
+  font-family: fc(bold);
+  border-radius: 3px;
+
+  &:hover {
+    color: cc(text);
+    background-color: cc(bg);
+  }
+
+  &--signup:hover {
+    color: cc(accent);
+    background-color: cc(bg);
+  }
+
+  &--home {
+    color: cc(primary);
+    background-color: cc(primary,0);
+    box-shadow: 0 0 0 2px cc(primary);
+
+    &:hover {
+      color: cc(text,alt);
+      background-color: cc(primary);
+    }
+  }
+}

@@ -44,28 +44,6 @@
   });
 
 
-  // switch hover background-color on feed articles
-  //background-color: cc(accent,alt,.8);
-  Scripts.enqueue(function hoverBackgrounds() {
-    var thisTime = 'rgba(43,191,147,.8)';
-    var nextTime = 'rgba(38,133,226,.85)';
-
-    var switchBg = function() {
-      var tmp = thisTime;
-      thisTime = nextTime;
-      nextTime = tmp;
-
-      var target = this.querySelector('.js-bgColorTarget');
-
-      target.style.backgroundColor = tmp;
-    };
-
-    [].forEach.call(document.querySelectorAll('.js-bgColor'), function(node) {
-      node.addEventListener('mouseover', switchBg);
-    });
-  });
-
-
   // generic event handlers
   Scripts.enqueue(function genericHandlers() {
     [].forEach.call(document.querySelectorAll('.a[href^="#"], form button'), function(node) {

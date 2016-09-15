@@ -1,7 +1,9 @@
 <?php # custom functions #
 
-## get layout
+## router
 function _udyux_get_layout() {
+  $root = get_template_directory();
+
   $pages = array(
     'home'    => is_front_page(),
     'article' => get_post_type() === 'article' && is_single(),
@@ -9,6 +11,7 @@ function _udyux_get_layout() {
     'archive' => is_archive() || is_search()
   );
 
+  $page = '404';
   foreach ($pages as $this_page => $is) {
     if ($is) {
       $page = $this_page;
@@ -16,16 +19,10 @@ function _udyux_get_layout() {
     }
   }
 
-  $page = $page ?: '404';
-
-  _udyux_get_partial('file', 'header');
-  _udyux_get_partial('main', 'nav');
-  _udyux_get_partial('main', 'header');
-
-  require get_template_directory() . "/layouts/{$page}.php";
-
-  _udyux_get_partial('main', 'footer');
-  _udyux_get_partial('file', 'footer');
+  // render
+  require_once "{$root}/layouts/header.php";
+  require_once "{$root}/layouts/{$page}.php";
+  require_once "{$root}/layouts/footer.php";
 }
 
 
@@ -35,7 +32,7 @@ function _udyux_get_partial($type, $name) {
 }
 
 
-## get page type
+## check or get page type
 function _udyux_page_is($type = null) {
   $pages = array(
     'home'    => is_front_page(),
@@ -49,6 +46,12 @@ function _udyux_page_is($type = null) {
 
   if ($type) return $pages[$type];
   else foreach ($pages as $page => $is) if ($is) return $page;
+}
+
+
+## format content with p tags
+function _udyux_format_content($content) {
+  return apply_filters('the_content', wpautop($content));
 }
 
 
@@ -87,17 +90,11 @@ function _udyux_get_prev_paged_link() {
 }
 
 
-## get google maps link with query
+## get google maps link
 function _udyux_get_map_link($string) {
 	$string = preg_replace('/\s+/', ' ', $string);
 	$string = strtolower(preg_replace('/\s/', '+', $string));
 	return "https://www.google.ca/maps/place/{$string}";
-}
-
-
-## format content with p tags
-function _udyux_format_content($content) {
-  return apply_filters('the_content', wpautop($content));
 }
 
 

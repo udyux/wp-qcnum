@@ -3,9 +3,34 @@
 ------------------*/
 
 .feed {
+  position: relative;
   height: 50vw;
+  margin-top: calc(5vw + 20px);
   display: flex;
   flex-wrap: wrap;
+
+  &__header {
+    width: 100%;
+    padding: 2.75vw 2.25vw 2.5vw;
+    absolute: top left;
+    transform: translateY(-100%);
+    background-color: cc(bg,alt);
+    color: cc(text,alt);
+    font-family: fc(bold);
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+
+  &__type {
+    position: relative;
+
+    &::after {
+      content: '';
+      size: 100% 3px;
+      absolute: bottom -.5vw left;
+      border-radius: 2px;
+    }
+  }
 
   &__item {
     position: relative;
@@ -52,6 +77,7 @@
     display: block;
     size: 100%;
     absolute: top left;
+    background-color: cc(primary,.85);
     z-index: -1;
   }
 
@@ -61,7 +87,13 @@
   }
 
   &--news {
-    border-width: 5px 0 5px 5px;
+    .feed__type {
+      text-align: right;
+
+      &::after {
+        background-color: cc(primary);
+      }
+    }
 
     .feed__item {
       size: 50%;
@@ -70,7 +102,7 @@
         text-align: right;
       }
 
-      &:first-child {
+      &:first-of-type {
         width: 100%;
         text-align: left;
 
@@ -95,7 +127,10 @@
 
   &--events {
     display: block;
-    border-width: 5px 5px 5px 0;
+
+    .feed__type::after {
+      background-color: cc(accent);
+    }
 
     .feed__item {
       height: calc(100% / 3);
@@ -109,9 +144,18 @@
         background-color: cc(bg,alt,0);
       }
     }
+
+    .feed__overlay {
+      background-color: cc(accent,alt,.8);
+    }
   }
 
   &--post {
     height: 20vw;
+    margin-top: 0;
+
+    .feed__overlay--event {
+      background-color: cc(accent,alt,.8);
+    }
   }
 }

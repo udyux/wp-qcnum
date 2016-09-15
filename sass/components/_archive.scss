@@ -1,19 +1,16 @@
 /* post list */
 
 .archive {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+
   &__nav {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 1.5rem 4.5vw;
     background-color: cc(bg,alt);
-    color: cc(text,footer);
-    font-family: fc(bold);
-    font-size: 18px;
-
-    a:hover {
-      color: cc(text,alt);
-      text-decoration: underline;
-    }
   }
 
   &__none {

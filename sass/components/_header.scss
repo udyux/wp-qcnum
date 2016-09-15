@@ -5,7 +5,7 @@
 .header {
   position: relative;
   height: 35vw;
-  color: cc(text,header);
+  color: cc(text,alt);
 
   &::after {
     content: '';
@@ -17,7 +17,7 @@
   &__image {
     size: 100%;
     absolute: top left;
-    filter: grayscale(.4);
+    filter: grayscale(.5);
     @include bgCover;
   }
 
@@ -45,7 +45,8 @@
     height: 100vh;
     max-height: 1080px;
 
-    .header__image::after {
+    &::after {
+      mix-blend-mode: initial;
       @include gradient(.65,1);
     }
 
@@ -64,5 +65,9 @@
 
   &--map::after {
     display: none;
+  }
+
+  &--reverse::after {
+    @include gradient(.5,.65,40%,top);
   }
 }

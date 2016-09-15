@@ -1,10 +1,11 @@
 <? # post feed #
-  $post_type = get_post_type();
+  $type = get_post_type();
+  $mod  = $type === 'event' ? ' feed__overlay--event' : null;
 
   $posts = new WP_Query(array(
     'post__not_in' 	 => array( get_the_ID() ),
     'posts_per_page' => 3,
-    'post_type'			 => $post_type,
+    'post_type'			 => $type,
     'post_status' 	 => 'publish'
   ));
 ?>
@@ -17,15 +18,14 @@
     $title   = get_the_title();
     $link    = get_permalink();
     $excerpt = _udyux_get_excerpt(200);
-    $img        = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-    $featured   = $img ?: get_field("{$post_type}_header", 'options');
+    $featured   = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ?: get_field("{$type}_header", 'options');
 
     $start_date = _udyux_format_date( get_field('start_date') );
     $end_date   = _udyux_format_date( get_field('end_date') ); ?>
 
     <article class="feed__item row__item">
       <div class="feed__image" style="background-image:url(<?= $featured; ?>)"></div>
-      <div class="feed__content js-bgColor">
+      <div class="feed__content">
         <h3 class="feed__title">
 
           <? if ($start_date && $end_date): ?>
@@ -37,7 +37,7 @@
           <?= $title; ?>
 
         </h3>
-        <p class="feed__excerpt"><span class="feed__overlay js-bgColorTarget"></span><?= $excerpt; ?></p>
+        <p class="feed__excerpt"><span class="feed__overlay <?= $mod; ?>"></span><?= $excerpt; ?></p>
         <a class="feed__link" href="<?= $link; ?>"></a>
       </div>
     </article>

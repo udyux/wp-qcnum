@@ -1,24 +1,27 @@
 <? # main header #
   $page = _udyux_page_is();
-  $classlist = $page == 'home' ? array('header', 'header--home'): array('header');
+  $classlist = array('header');
+  $map = get_field('map');
 
-  if ($page == 'event') $map = get_field('map');
-  if (!empty($map)) $classlist[] = 'header--map';
-
-  if (_udyux_page_is('post')):
+  if (_udyux_page_is('post')) {
     $title  = get_the_title();
     $header = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ?: get_field("{$page}_header", 'options');
+  }
 
-  elseif ($page == 'archive'):
+  elseif ($page === 'archive') {
     $type   = get_post_type();
     $title  = get_field("{$type}_title", 'options');
     $header = get_field("{$type}_header", 'options');
+  }
 
-  else:
-    $title = $page == 'author' ? get_the_author() : get_field("{$page}_title", 'options');
+  else {
+    $title = $page === 'author' ? get_the_author() : get_field("{$page}_title", 'options');
     $header = get_field("{$page}_header", 'options');
+  }
 
-  endif;
+  if ($page == 'home') $classlist[] = 'header--home';
+  else if (!empty($map)) $classlist[] = 'header--map';
+  else if ($type === 'event' || $page === 'event') $classlist[] = 'header--reverse';
 ?>
 
 <header class="<?= implode(' ', $classlist); ?>" role="banner">

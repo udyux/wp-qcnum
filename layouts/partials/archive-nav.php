@@ -6,9 +6,13 @@
 <nav class="archive__nav">
 
   <? if ($next['link']): ?>
-    <a href="<?= $next['link']; ?>"><?= $next['label']; ?></a>
+    <a href="<?= $next['link']; ?>">
+      <button class="button"><?= $next['label']; ?></button>
+    </a>
   <? endif; if ($prev['link']): ?>
-    <a href="<?= $prev['link']; ?>"><?= $prev['label']; ?></a>
+    <a href="<?= $prev['link']; ?>">
+      <button class="button"><?= $prev['label']; ?></button>
+    </a>
   <? endif; ?>
 
 </nav>

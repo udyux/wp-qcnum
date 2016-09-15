@@ -2,50 +2,41 @@
 
 .preview {
   position: relative;
+  width: 50%;
   display: flex;
   align-items: stretch;
 
-  &:nth-child(even) {
+  &:nth-child(4n+2),
+  &:nth-child(4n+3) {
     background-color: cc(bg,sidebar);
-
-    .preview__title {
-      background-color: cc(accent,.8);
-    }
   }
 
   &__image {
     position: relative;
-    width: 30%;
-    height: 25vw;
-    filter: grayscale(.6);
+    width: 42.5%;
+    filter: grayscale(.5);
     @include bgCover;
   }
 
-  &__title {
-    size: 30% 100%;
+  &__content {
     padding: 2.25vw;
-    absolute: top left;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: cc(text,alt);
-    background-color: cc(primary,.8);
-    text-align: center;
-    font-family: fc(display);
-    font-size: 32px;
-  }
-
-  &__excerpt {
-    padding: 2.25vw 4.5vw 2.25vw 2.25vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: stretch;
     @include flex(1);
   }
 
+  &__title {
+    margin-bottom: 1.25rem;
+    color: cc(primary);
+    font-family: fc(display);
+    font-size: 28px;
+  }
+
   &__meta {
-    margin-top: 2.25vw;
+    margin-top: 1.25rem;
+    text-align: right;
 
     a {
       font-family: fc(bold);
@@ -59,9 +50,9 @@
     b {
       font-family: fc(regular);
     }
+  }
 
-    p+p {
-      margin-top: .5rem;
-    }
+  &--event .preview__title {
+    color: cc(accent,alt);
   }
 }

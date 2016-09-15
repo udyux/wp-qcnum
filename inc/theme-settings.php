@@ -26,7 +26,7 @@ add_action('pre_get_posts', '_udyux_posts_per_page');
 ## add custom post types to author queries
 // http://wordpress.stackexchange.com/a/161954
 function _udyux_author_post_types($query) {
-  if ( !is_admin() && $query->is_main_query() && $query->is_author() ) $query->set('post_type', array('post', 'article', 'event'));
+  if ( !is_admin() && $query->is_main_query() && $query->is_author() ) $query->set('post_type', array('post', 'article'));
 }
 add_action('pre_get_posts', '_udyux_author_post_types');
 
