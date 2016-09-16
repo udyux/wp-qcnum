@@ -6,7 +6,7 @@
   color: cc(text,alt);
   background-color: cc(bg,0);
   box-shadow: 0 0 0 2px cc(border);
-  font-family: fc(bold);
+  @include font(bold);
   border-radius: 3px;
 
   &:hover {

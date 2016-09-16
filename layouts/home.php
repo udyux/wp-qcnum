@@ -1,6 +1,4 @@
 <? # home page layout #
-  $title          = get_field('home_banner', 'options');
-  $header         = get_field('home_background', 'options');
   $activity_title = get_field('activity_title', 'options');
   $clients_title  = get_field('clients_title', 'options');
   $show_signup    = get_field('show_signup', 'options');
@@ -55,7 +53,7 @@
       $link    = get_permalink();
       $excerpt = _udyux_get_excerpt($max);
       $img        = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-      $featured   = $img ?: get_field('event_header', 'options'); ?>
+      $featured   = _udyux_get_featured_image($post->ID, 'article'); ?>
 
       <article class="feed__item">
         <div class="feed__image" style="background-image:url(<?= $featured; ?>)"></div>
@@ -91,8 +89,7 @@
       $start_date = _udyux_format_date( get_field('start_date') );
       $end_date   = _udyux_format_date( get_field('end_date') );
       $excerpt    = _udyux_get_excerpt(250);
-      $img        = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-      $featured   = $img ?: get_field('event_header', 'options'); ?>
+      $featured   = _udyux_get_featured_image($post->ID, 'event'); ?>
 
       <article class="feed__item">
         <div class="feed__image" style="background-image:url(<?= $featured; ?>)"></div>

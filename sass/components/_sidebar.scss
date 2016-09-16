@@ -13,7 +13,21 @@
     margin-top: .4rem;
     margin-left: 1rem;
     font-size: 18px;
-    line-height: 1.2;
+
+    a {
+      @include font(bold);
+    }
+
+    &--center {
+      text-align: center;
+    }
+  }
+
+  &__author {
+    size: 60px auto;
+    margin-top: 1.2rem;
+    border: 2px solid cc(primary);
+    border-radius: 100%;
   }
 
   &__submeta {
@@ -21,7 +35,7 @@
     font-size: 18px;
     margin-top: .8rem;
     margin-left: 1rem;
-    font-family: fc(regular);
+    @include font(regular);
 
     &::before {
       content: '';
@@ -36,13 +50,13 @@
 
   &__label {
     position: relative;
-    font-family: fc(display);
     color: cc(primary);
     text-align: right;
     text-transform: uppercase;
     font-size: 26px;
     margin-top: 2.25vw;
     padding-bottom: .25rem;
+    @include font(display);
 
     &::after {
       content: '';
@@ -55,10 +69,10 @@
 
   &__link {
     color: cc(primary);
-    font-family: fc(bold);
     font-size: 18px;
     text-decoration: underline;
     text-align: right;
     margin-top: 2.25vw;
+    @include font(bold);
   }
 }

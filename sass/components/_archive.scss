@@ -16,15 +16,14 @@
   &__none {
     padding: 6vw 4.5vw;
     text-align: center;
-    font-family: fc(regular);
+    @include font(regular);
     font-size: 20px;
-    line-height: 1.25;
   }
 
   &__message {
     margin-bottom: .5rem;
     color: cc(primary);
-    font-family: fc(display);
+    @include font(display);
     font-size: 46px;
     text-transform: uppercase;
   }

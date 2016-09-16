@@ -18,7 +18,9 @@
 }
 
 // font-control
-@function fc($font) {
-  $fontString: map-get($fonts, $font);
-  @return $fontString;
+@function f-c($font,$prop) {
+  $set: map-get($fonts, $font);
+  $result: map-get($set, $prop);
+
+  @return $result;
 }

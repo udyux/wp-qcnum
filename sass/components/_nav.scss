@@ -9,7 +9,7 @@
   color: cc(text,alt);
   background-color: cc(bg,alt,.5);
   z-index: 1;
-  font-family: fc(bold);
+  @include font(bold);
 
   &__menu {
     absolute: top 50% right 4.5vw;

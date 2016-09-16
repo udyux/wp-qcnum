@@ -13,7 +13,7 @@
   text-align: center;
 
   &__title {
-    font-family: fc(display);
+    @include font(display);
     font-size: 36px;
     color: cc(text,alt);
     text-transform: uppercase;

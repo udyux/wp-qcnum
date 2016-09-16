@@ -34,11 +34,30 @@
   Scripts.enqueue(function cleanPosts() {
     var postContent = document.querySelector('.js-cleanPost');
 
+    var outerLoop = function(node) {
+      var links = node.querySelectorAll('a');
+
+      if (!node.innerHTML && node.tagName !== 'IMG') node.parentNode.removeChild(node);
+      if (node.classlist && node.classlist.contains('wp-caption')) node.style = null;
+      if (links.length) innerLoop(links);
+    };
+
+    var innerLoop = function(links) {
+      [].forEach.call(links, function(link) {
+        var img = link.querySelector('img');
+
+        if (img) {
+          link.parentNode.insertBefore(img.cloneNode(), link);
+          link.parentNode.removeChild(link);
+        }
+      });
+    };
+
     if (postContent) {
       postContent.innerHTML = postContent.innerHTML.replace(/&nbsp;/g, ' ');
 
       [].forEach.call(postContent.children, function(node) {
-        if (!node.innerHTML && node.tagName !== 'IMG') node.parentNode.removeChild(node);
+        outerLoop(node);
       });
     }
   });

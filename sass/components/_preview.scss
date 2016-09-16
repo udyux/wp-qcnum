@@ -14,8 +14,15 @@
   &__image {
     position: relative;
     width: 42.5%;
-    filter: grayscale(.5);
+    filter: grayscale(.75) contrast(.5) brightness(1.5);
     @include bgCover;
+  }
+
+  &__overlay {
+    size:  42.5% 100%;
+    absolute: top left;
+    mix-blend-mode: multiply;
+    background-color: cc(primary,.5);
   }
 
   &__content {
@@ -30,16 +37,17 @@
   &__title {
     margin-bottom: 1.25rem;
     color: cc(primary);
-    font-family: fc(display);
+    @include font(display);
     font-size: 28px;
   }
 
   &__meta {
     margin-top: 1.25rem;
     text-align: right;
+    z-index: 1;
 
     a {
-      font-family: fc(bold);
+      @include font(bold);
       color: cc(primary);
 
       &:hover {
@@ -48,11 +56,17 @@
     }
 
     b {
-      font-family: fc(regular);
+      @include font(regular);
     }
   }
 
-  &--event .preview__title {
-    color: cc(accent,alt);
+  &--event {
+    .preview__overlay {
+      background-color: cc(accent,alt,.5);
+    }
+
+    .preview__title {
+      color: cc(accent,alt);
+    }
   }
 }

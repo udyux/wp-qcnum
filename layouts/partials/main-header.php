@@ -1,23 +1,29 @@
 <? # main header #
   $page = _udyux_page_is();
   $classlist = array('header');
-  $map = get_field('map');
+  $map = $page === 'event' ? get_field('map') : null;
 
+  // event or article
   if (_udyux_page_is('post')) {
     $title  = get_the_title();
-    $header = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ?: get_field("{$page}_header", 'options');
+    $header = _udyux_get_featured_image($post->ID, $page);
   }
 
+  // event or article archive
   elseif ($page === 'archive') {
     $type   = get_post_type();
     $title  = get_field("{$type}_title", 'options');
     $header = get_field("{$type}_header", 'options');
   }
 
+  // author, search or home
   else {
     $title = $page === 'author' ? get_the_author() : get_field("{$page}_title", 'options');
     $header = get_field("{$page}_header", 'options');
+
   }
+
+  if ($page === 'author') $grav = get_avatar_url( get_the_author_meta('ID'), array('size' => 256) );
 
   if ($page == 'home') $classlist[] = 'header--home';
   else if (!empty($map)) $classlist[] = 'header--map';
@@ -46,7 +52,17 @@
   <? else: ?>
 
     <div class="header__image" style="background-image:url(<?= $header; ?>)"></div>
-    <h1 class="header__title "><?= $title; ?></h1>
+    <h1 class="header__title ">
+
+      <? if (!empty($grav)): ?>
+
+        <img class="header__grav" src="<?= $grav; ?>"><br>
+
+      <? endif; ?>
+
+      <?= $title; ?>
+
+    </h1>
 
   <? endif; ?>
 

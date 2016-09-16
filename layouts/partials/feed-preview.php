@@ -15,10 +15,10 @@
   <?
 	  if ( $posts->have_posts() ): while ( $posts->have_posts() ) : $posts->the_post();
 
-    $title   = get_the_title();
-    $link    = get_permalink();
-    $excerpt = _udyux_get_excerpt(200);
-    $featured   = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ?: get_field("{$type}_header", 'options');
+    $title    = get_the_title();
+    $link     = get_permalink();
+    $excerpt  = _udyux_get_excerpt(200);
+    $featured = _udyux_get_featured_image($post->ID, $type);
 
     $start_date = _udyux_format_date( get_field('start_date') );
     $end_date   = _udyux_format_date( get_field('end_date') ); ?>

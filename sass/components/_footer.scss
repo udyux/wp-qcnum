@@ -10,10 +10,9 @@
   padding-bottom: calc(2.25vw + 3rem);
   color: cc(text,footer);
   background-color: cc(bg,footer);
-  line-height: 1.3;
 
   &__title {
-    font-family: fc(bold);
+    @include font(bold);
     margin-bottom: .75rem;
   }
 

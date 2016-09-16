@@ -1,5 +1,10 @@
 // mixin
 
+@mixin font($type:light) {
+  font-family: f-c($type,family);
+  line-height: f-c($type,height);
+}
+
 @mixin clearfix {
 	&::after {
 		content: '';

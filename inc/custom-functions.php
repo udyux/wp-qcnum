@@ -67,6 +67,25 @@ function _udyux_get_excerpt($charlength) {
 }
 
 
+## get featured image or default
+function _udyux_get_featured_image($post_id, $type = 'article') {
+  $featured = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+  $default = get_field("{$type}_header", 'options');
+  return $featured ?: $default;
+}
+
+
+## get author meta
+function _udyux_get_author_meta($author_id) {
+  return array(
+    'name' => get_the_author(),
+    'link' => get_author_posts_url($author_id),
+    'grav' => get_avatar_url($author_id),
+    'desc' => get_the_author_meta('description')
+  );
+}
+
+
 ## get post list navigation links
 function _udyux_get_next_paged_link() {
 	global $paged, $wp_query;

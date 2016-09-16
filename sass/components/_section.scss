@@ -8,7 +8,7 @@
   &__title {
     position: relative;
     padding: .25em 0;
-    font-family: fc(display);
+    @include font(display);
     font-size: 42px;
     text-align: center;
     text-transform: uppercase;
@@ -25,9 +25,5 @@
     &::after {
       top: 100%;
     }
-  }
-
-  p {
-    line-height: 1.15;
   }
 }

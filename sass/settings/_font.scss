@@ -1,9 +1,21 @@
 // font-control
-// use fc($font);
+// use font mixin
 
 $fonts: (
-  light: "Ubuntu-Light",
-  regular: "Ubuntu",
-  bold: "Ubuntu-Bold",
-  display: "RevolutionGothic-ExtraBold"
+  light: (
+    family: "Ubuntu-Light",
+    height: 1.3
+  ),
+  regular: (
+    family: "Ubuntu",
+    height: 1.3
+  ),
+  bold: (
+    family: "Ubuntu-Bold",
+    height: 1.25
+  ),
+  display: (
+    family: "RevolutionGothic-ExtraBold",
+    height: 1.15
+  )
 );

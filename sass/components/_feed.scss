@@ -16,7 +16,7 @@
     transform: translateY(-100%);
     background-color: cc(bg,alt);
     color: cc(text,alt);
-    font-family: fc(bold);
+    @include font(bold);
     font-size: 20px;
     text-transform: uppercase;
   }
@@ -57,7 +57,7 @@
   }
 
   &__title {
-    font-family: fc(display);
+    @include font(display);
     font-size: 36px;
     z-index: 1;
     pointer-events: none;
@@ -65,7 +65,7 @@
 
   &__excerpt {
     transition: opacity 225ms $ease;
-    font-family: fc(regular);
+    @include font(regular);
     opacity: 0;
 
     .feed__content:hover & {
