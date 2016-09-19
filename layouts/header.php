@@ -4,6 +4,8 @@
   $charset   = get_bloginfo('charset');
   $pingback  = get_bloginfo('pingback_url');
   $favicon   = get_field('favicon', 'options');
+
+  $get_header = !_udyux_page_is('about');
 ?>
 
 <!DOCTYPE html>
@@ -24,5 +26,5 @@
 
     <?
       _udyux_get_partial('main', 'nav');
-      _udyux_get_partial('main', 'header');
+      if ($get_header) _udyux_get_partial('main', 'header');
     ?>

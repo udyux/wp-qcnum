@@ -1,0 +1,15 @@
+/* col */
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  &__item {
+    @include flex;
+
+    &--double {
+      @include flex(2);
+    }
+  }
+}

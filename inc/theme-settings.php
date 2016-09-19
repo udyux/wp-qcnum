@@ -15,6 +15,13 @@ function _udyux_setup() {
 add_action('after_setup_theme', '_udyux_setup');
 
 
+## override default template routing
+function _udyux_template_redirect() {
+  return get_template_directory() . '/index.php';
+}
+add_action('template_include', '_udyux_template_redirect');
+
+
 ## set posts per page
 // http://wordpress.stackexchange.com/a/30763
 function _udyux_posts_per_page($query) {

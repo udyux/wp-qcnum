@@ -83,7 +83,7 @@ gulp.task('css', function() {
 			var errMsg = err.messageOriginal.toString();
 			if (beep) beep();
 			if (notifier) notifier.notify({title: errPath, message: errMsg});
-		 	console.log(errMsg);
+		 	console.log(errPath,'\n',errMsg);
 		 	this.emit('end');
 		}))
 		.pipe(sass())

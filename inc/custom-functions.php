@@ -8,6 +8,7 @@ function _udyux_get_layout() {
     'home'    => is_front_page(),
     'article' => get_post_type() === 'article' && is_single(),
     'event'   => get_post_type() === 'event' && is_single(),
+    'about'   => is_page_template('layouts/about.php'),
     'archive' => is_archive() || is_search()
   );
 
@@ -20,9 +21,9 @@ function _udyux_get_layout() {
   }
 
   // render
-  require_once "{$root}/layouts/header.php";
-  require_once "{$root}/layouts/{$page}.php";
-  require_once "{$root}/layouts/footer.php";
+  require "{$root}/layouts/header.php";
+  require "{$root}/layouts/{$page}.php";
+  require "{$root}/layouts/footer.php";
 }
 
 
@@ -36,9 +37,10 @@ function _udyux_get_partial($type, $name) {
 function _udyux_page_is($type = null) {
   $pages = array(
     'home'    => is_front_page(),
-    'article' => get_post_type() === 'article' && is_single(),
-    'event'   => get_post_type() === 'event' && is_single(),
-    'archive' => is_post_type_archive('article') || is_post_type_archive('event'),
+    'article' => is_singular('article'),
+    'event'   => is_singular('event'),
+    'about'   => is_page_template('layouts/about.php'),
+    'archive' => is_post_type_archive(array('article', 'event')),
     'search'  => is_search(),
     'author'  => is_author(),
     'post'    => is_single()
@@ -80,7 +82,7 @@ function _udyux_get_author_meta($author_id) {
   return array(
     'name' => get_the_author(),
     'link' => get_author_posts_url($author_id),
-    'grav' => get_avatar_url($author_id),
+    'grav' => get_avatar_url($author_id, array('size' => 256)),
     'desc' => get_the_author_meta('description')
   );
 }

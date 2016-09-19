@@ -1,8 +1,8 @@
 // mixin
 
 @mixin font($type:light) {
-  font-family: f-c($type,family);
-  line-height: f-c($type,height);
+  font-family: fc($type,family);
+  line-height: fc($type,height);
 }
 
 @mixin clearfix {

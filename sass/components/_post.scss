@@ -16,12 +16,12 @@
       .rte > p:first-of-type {
         position: relative;
         margin: 4.5vw;
-        color: black;
-        background-color: white;
-        @include font(bold);
+        color: #000;
+        background-color: #fff;
         font-size: 26px;
         text-align: justify;
         overflow: hidden;
+        @include font(bold);
 
         &::after {
           content: '';

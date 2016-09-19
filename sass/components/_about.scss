@@ -1,0 +1,104 @@
+/* about */
+
+.about {
+  &__header {
+    position: relative;
+    height: 85vh;
+    padding-top: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: cc(text,alt);
+    overflow: hidden;
+  }
+
+  &__section {
+    position: relative;
+    padding: 4.5vw 9vw;
+  }
+
+  &__background {
+    size: 100%;
+    absolute: top left;
+    @include bgCover;
+
+    &::after {
+      content: '';
+      size: 100%;
+      absolute: top left;
+      background-color: cc(primary);
+      mix-blend-mode: screen;
+    }
+  }
+
+  &__title {
+    margin: 4.5vw 0;
+    font-size: 42px;
+    text-align: center;
+    text-transform: uppercase;
+    z-index: 1;
+    @include font(display);
+    @include flex;
+
+    &--main {
+      text-align: right;
+    }
+  }
+
+  &__circle {
+    position: relative;
+    size: 120px;
+    margin: 0 4rem;
+    border: 2px solid cc(border);
+    border-radius: 100%;
+    z-index: 1;
+
+    &::after {
+      content: '';
+      size: 2px 50vh;
+      absolute: top 100% left 50%;
+      transform: translateX(-50%);
+      background-color: cc(bg);
+    }
+  }
+
+  &__box {
+    position: relative;
+    padding: 1rem 9vw 1rem 0;
+    z-index: 1;
+    @include flex;
+  }
+
+  &__subtitle {
+    font-size: 24px;
+    @include font(bold);
+  }
+
+  &__text {
+    font-size: 18px;
+    @include font(regular);
+
+    &--beginning {
+      margin-right: 9vw;
+    }
+
+    &--beginning {
+      absolute: top 100% left;
+    }
+
+    &--waq {
+      font-size: 24px;
+      color: #000;
+      background-color: #fff;
+      padding: .5rem;
+
+      &::after {
+        content: '';
+        size: 100%;
+        absolute: top left;
+        mix-blend-mode: screen;
+        @include gradient(1,1,0);
+      }
+    }
+  }
+}
