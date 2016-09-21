@@ -1,0 +1,140 @@
+/* milestone */
+
+.milestone {
+  position: relative;
+  height: 80vh;
+  max-height: 900px;
+  padding-bottom: 9vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: cc(text,alt);
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    size: 100%;
+    absolute: top left;
+    background-color: cc(first,milestone);
+    opacity: .8;
+  }
+
+  &__background {
+    size: 100%;
+    absolute: top left;
+    filter: grayscale(.25);
+    @include bgCover;
+  }
+
+  &__title {
+    width: 45vw;
+    margin: 2.25vw 0;
+    color: cc(text,alt);
+    font-size: 48px;
+    text-align: right;
+    text-transform: uppercase;
+    z-index: 1;
+    @include font(display);
+  }
+
+  &__circle {
+    position: relative;
+    size: 5vw;
+    margin: 0 2.5vw;
+    border: 2px solid cc(border);
+    border-radius: 100%;
+    z-index: 1;
+
+    &::before,
+    &::after {
+      content: '';
+      size: 2px 50vh;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: cc(border);
+    }
+
+    &::before {
+      bottom: 100%;
+    }
+
+    &::after {
+      top: 100%;
+    }
+  }
+
+  &__box {
+    position: relative;
+    padding: 1rem 13.5vw 1rem 0;
+    z-index: 1;
+    @include flex;
+  }
+
+  &__subtitle {
+    font-size: 24px;
+    text-transform: uppercase;
+    @include font(bold);
+  }
+
+  &__text {
+    absolute: top 100% left;
+    margin-right: 13.5vw;
+    font-size: 18px;
+    @include font(regular);
+  }
+
+  &:nth-child(4n-2),
+  &:nth-child(4n) {
+    color: cc(primary);
+
+    .milestone__title {
+      color: cc(primary);
+    }
+
+    &::after {
+      background-color: cc(second,milestone);
+      opacity: .85;
+    }
+
+    .milestone__circle {
+      border-color: cc(primary);
+
+      &::before,
+      &::after {
+        background-color: cc(primary);
+      }
+    }
+  }
+
+  &:nth-child(4n-1)::after {
+    background-color: cc(third,milestone);
+    opacity: .8;
+  }
+
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+
+    .milestone {
+      &__title {
+        text-align: left;
+      }
+
+      &__box {
+        padding-right: 0;
+        padding-left: 13.5vw;
+        text-align: right;
+      }
+
+      &__text {
+        text-align: right;
+        margin-right: 0;
+        margin-left: 13.5vw;
+      }
+    }
+  }
+
+  &--noImg::after {
+    opacity: 1 !important;
+  }
+}

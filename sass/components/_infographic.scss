@@ -2,10 +2,8 @@
 
 .infographic {
   position: relative;
-  padding: 2.25vw;
-  margin: 2.25vw 0;
-  display: flex;
-  align-items: stretch;
+  padding: 2.25vw 2.25vw 2.25vw 0;
+  margin: 0 4.5vw 4.5vw 0;
 
   &::before {
     content: '';
@@ -14,16 +12,55 @@
     background-color: cc(primary);
   }
 
+  &:first-child {
+    margin-top: 4.5vw;
+  }
+
   &__title {
+    position: relative;
     color: cc(primary);
-    font-size: 72px;
-    @include font(display);
+    font-size: 60px;
+    text-transform: uppercase;
+    @include font(display,.9);
   }
 
   &__image {
     margin-top: 2.25vw;
     background-repeat: no-repeat;
     background-size: contain;
-    backgorund-position: bottom right;
+    background-position: bottom left;
+
+    &--guests {
+      padding-top: 70%;
+      background-image: url(images/guests.png);
+    }
+
+    &--volunteers {
+      padding-top: 20%;
+      background-image: url(images/volunteers.png);
+    }
+
+    &--database {
+      background-image: url(images/database.png);
+    }
+
+    &--money {
+      background-image: url(images/money.png);
+    }
+
+    &--coffee {
+      background-image: url(images/coffee.png);
+    }
+  }
+
+  &--small {
+    margin-right: 0;
+    @include flex;
+
+    .infographic__image {
+      margin: 0;
+      absolute: top 2.25vw right bottom 2.25vw left;
+      background-position: bottom right;
+    }
   }
 }

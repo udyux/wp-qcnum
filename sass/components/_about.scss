@@ -3,24 +3,14 @@
 .about {
   &__header {
     position: relative;
-    height: 85vh;
+    height: 80vh;
+    max-height: 900px;
     padding-top: 85px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: cc(text,alt);
     overflow: hidden;
-  }
-
-  &__section {
-    position: relative;
-    padding: 4.5vw 9vw;
-  }
-
-  &__background {
-    size: 100%;
-    absolute: top left;
-    @include bgCover;
 
     &::after {
       content: '';
@@ -31,24 +21,55 @@
     }
   }
 
+  &__section {
+    position: relative;
+    padding: 2.25vw 13.5vw;
+    overflow: hidden;
+  }
+
+  &__background {
+    size: 100%;
+    absolute: top left;
+    filter: grayscale(.5);
+    @include bgCover;
+  }
+
   &__title {
-    margin: 4.5vw 0;
-    font-size: 42px;
-    text-align: center;
+    width: 40vw;
+    margin: 2.25vw 0;
+    color: cc(text,alt);
+    font-size: 48px;
+    text-align: right;
     text-transform: uppercase;
     z-index: 1;
     @include font(display);
-    @include flex;
 
-    &--main {
-      text-align: right;
+    &--waq {
+      display: inline-block;
+      width: auto;
+      margin: 2.25vw 0 4.5vw;
+      padding: .4em;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      color: cc(primary);
+      border: 2px solid cc(primary);
+      text-align: center;
+
+      &::before {
+        content: '';
+        size: 2px 5vw;
+        absolute: bottom 100% left 50%;
+        transform: translateX(-50%);
+        background-color: cc(primary);
+      }
     }
   }
 
   &__circle {
     position: relative;
-    size: 120px;
-    margin: 0 4rem;
+    size: 10vw;
+    margin: 0 5vw;
     border: 2px solid cc(border);
     border-radius: 100%;
     z-index: 1;
@@ -58,19 +79,20 @@
       size: 2px 50vh;
       absolute: top 100% left 50%;
       transform: translateX(-50%);
-      background-color: cc(bg);
+      background-color: cc(border);
     }
   }
 
   &__box {
     position: relative;
-    padding: 1rem 9vw 1rem 0;
+    padding: 1rem 13.5vw 1rem 0;
     z-index: 1;
     @include flex;
   }
 
   &__subtitle {
     font-size: 24px;
+    text-transform: uppercase;
     @include font(bold);
   }
 
@@ -79,18 +101,18 @@
     @include font(regular);
 
     &--beginning {
-      margin-right: 9vw;
-    }
-
-    &--beginning {
       absolute: top 100% left;
+      margin-right: 13.5vw;
     }
 
     &--waq {
-      font-size: 24px;
+      margin-bottom: 2.25vw;
+      position: relative;
+      font-size: 28px;
       color: #000;
       background-color: #fff;
       padding: .5rem;
+      text-align: justify;
 
       &::after {
         content: '';

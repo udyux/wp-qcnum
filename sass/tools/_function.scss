@@ -18,9 +18,11 @@
 }
 
 // font-control
-@function fc($font,$prop) {
+@function fc($font,$prop,$height:false) {
   $set: map-get($fonts, $font);
   $result: map-get($set, $prop);
+
+  @if ($height) {$result: $height;}
 
   @return $result;
 }
