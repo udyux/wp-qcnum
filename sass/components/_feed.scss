@@ -13,12 +13,12 @@
     width: 100%;
     padding: 2.75vw 2.25vw 2.5vw;
     absolute: top left;
-    transform: translateY(-100%);
-    background-color: cc(bg,alt);
+    transform: translateY(-97.5%);
+    background-color: cc(primary);
     color: cc(text,alt);
-    @include font(bold);
     font-size: 20px;
     text-transform: uppercase;
+    @include font(bold);
   }
 
   &__type {
@@ -29,6 +29,7 @@
       size: 100% 3px;
       absolute: bottom -.5vw left;
       border-radius: 2px;
+      background-color: cc(bg);
     }
   }
 
@@ -65,8 +66,8 @@
 
   &__excerpt {
     transition: opacity 225ms $ease;
-    @include font(regular);
     opacity: 0;
+    @include font(regular);
 
     .feed__content:hover & {
       opacity: 1;
@@ -87,14 +88,6 @@
   }
 
   &--news {
-    .feed__type {
-      text-align: right;
-
-      &::after {
-        background-color: cc(primary);
-      }
-    }
-
     .feed__item {
       size: 50%;
 
@@ -127,10 +120,6 @@
 
   &--events {
     display: block;
-
-    .feed__type::after {
-      background-color: cc(accent);
-    }
 
     .feed__item {
       height: calc(100% / 3);
