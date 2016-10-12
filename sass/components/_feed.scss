@@ -4,25 +4,34 @@
 
 .feed {
   position: relative;
-  height: 50vw;
-  margin-top: calc(5vw + 20px);
-  display: flex;
-  flex-wrap: wrap;
+
+  @media (--desktop) {
+    height: 50vw;
+    margin-top: 64px;
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   &__header {
-    width: 100%;
-    padding: 2.75vw 2.25vw 2.5vw;
-    absolute: top left;
-    transform: translateY(-97.5%);
+    height: 65px;
+    padding: 1rem 2.25vw 0;
     background-color: cc(primary);
     color: cc(text,alt);
     font-size: 20px;
     text-transform: uppercase;
     @include font(bold);
+
+    @media (--desktop) {
+      width: 100%;
+      absolute: top left;
+      transform: translateY(-100%);
+    }
   }
 
   &__type {
     position: relative;
+    display: flex;
+    align-items: center;
 
     &::after {
       content: '';
@@ -65,12 +74,17 @@
   }
 
   &__excerpt {
-    transition: opacity 225ms $ease;
-    opacity: 0;
-    @include font(regular);
+    padding: 2.25vw 0;
 
-    .feed__content:hover & {
-      opacity: 1;
+    @media (--desktop) {
+      transition: opacity 225ms $ease;
+      padding: 0;
+      opacity: 0;
+      @include font(regular);
+
+      .feed__content:hover & {
+        opacity: 1;
+      }
     }
   }
 
@@ -78,8 +92,12 @@
     display: block;
     size: 100%;
     absolute: top left;
-    background-color: cc(primary,.85);
+    background-color: cc(primary,.65);
     z-index: -1;
+
+    @media (--desktop) {
+      background-color: cc(primary,.85);
+    }
   }
 
   &__link {
@@ -89,10 +107,16 @@
 
   &--news {
     .feed__item {
-      size: 50%;
+      height: 50%;
+
+      @media (--desktop) {
+        size: 50%;
+      }
 
       .feed__title {
-        text-align: right;
+        @media (--desktop) {
+          text-align: right;
+        }
       }
 
       &:first-of-type {
@@ -110,7 +134,9 @@
     }
 
     .feed__content {
-      align-items: flex-end;
+      @media (--desktop) {
+        align-items: flex-end;
+      }
 
       &:hover {
         background-color: cc(bg,alt,0);
@@ -122,7 +148,17 @@
     display: block;
 
     .feed__item {
-      height: calc(100% / 3);
+      @media (--desktop) {
+        height: calc(100% / 3);
+      }
+    }
+
+    .feed__header {
+      background-color: cc(accent, alt);
+
+      @media (--desktop) {
+        background-color: cc(primary);
+      }
     }
 
     .feed__content {

@@ -16,7 +16,7 @@
     <p><?= $message; ?></p>
   </div>
 
-  <div>
+  <div class="footer__sitemap">
     <h6 class="footer__title">Plan du site</h6>
     <ul>
 
@@ -37,7 +37,7 @@
 
   <div>
     <h6 class="footer__title"><?= $social_title; ?></h6>
-    <ul>
+    <ul class="footer__socialList">
 
       <?
         if ( have_rows('social_links', 'options') ) : while ( have_rows('social_links', 'options') ) : the_row();

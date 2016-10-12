@@ -20,9 +20,14 @@
   }
 
   &--home {
+    margin-top: 4.5vw;
     color: cc(primary);
     background-color: cc(primary,0);
     box-shadow: 0 0 0 2px cc(primary);
+
+    @media (--tablet) {
+      margin-top: 0;
+    }
 
     &:hover {
       color: cc(text,alt);

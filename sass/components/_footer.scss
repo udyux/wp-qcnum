@@ -17,7 +17,33 @@
   }
 
   &__message {
-    margin-right: 4.5vw;
+    display: none;
+
+    @media (--tablet) {
+      display: block;
+      width: 25%;
+      margin-right: 4.5vw;
+    }
+
+    @media (--desktop) {
+      width: auto;
+    }
+  }
+
+  &__sitemap {
+    display: none;
+
+    @media (--tablet) {
+      display: block;
+    }
+  }
+
+  &__socialList {
+    text-align: right;
+
+    @media (--tablet) {
+      text-align: left;
+    }
   }
 
   &__social {
@@ -51,5 +77,11 @@
   a:hover {
     color: cc(text,alt);
     text-decoration: underline;
+  }
+
+  @media (--only-phone) {
+    .logo {
+      margin-top: .75rem;
+    }
   }
 }

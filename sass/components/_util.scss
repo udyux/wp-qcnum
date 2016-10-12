@@ -7,7 +7,11 @@
 }
 
 .logo {
-  size: auto 55px;
+  size: auto 45px;
+
+  @media (--desktop) {
+    height: 55px;
+  }
 }
 
 .text--desktop {

@@ -93,27 +93,4 @@
   </aside>
 </section>
 
-
-<section class="section activity">
-  <h2 class="section__title"><?= $activity_title; ?></h2>
-  <div class="row--md activity__row">
-
-    <?
-      if ( have_rows('activity_blocks', 'options') ) : while ( have_rows('activity_blocks', 'options') ) : the_row();
-
-      $title = get_sub_field('block_title');
-      $icon   = get_sub_field('block_icon');
-      $desc  = get_sub_field('block_description'); ?>
-
-      <div class="activity__block row__item">
-        <img class="activity__icon" src="<?= $icon; ?>" alt="<?= $title; ?>"/>
-        <h3 class="activity__title"><?= $title; ?></h3>
-        <p class="activity__desc"><?= $desc; ?></p>
-      </div>
-
-    <? endwhile; endif; ?>
-
-  </div>
-</section>
-
 <? if ($show_signup) _udyux_get_partial('form', 'signup'); ?>
