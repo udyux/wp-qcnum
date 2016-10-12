@@ -14,17 +14,18 @@
   }
 
   &__none {
+    width: 100%;
     padding: 6vw 4.5vw;
     text-align: center;
-    @include font(regular);
     font-size: 20px;
+    @include font(regular);
   }
 
   &__message {
     margin-bottom: .5rem;
     color: cc(primary);
-    @include font(display);
     font-size: 46px;
     text-transform: uppercase;
+    @include font(display);
   }
 }
