@@ -1,0 +1,79 @@
+/* member */
+
+.member {
+  position: relative;
+  padding: 4.5vw 13.5vw;
+  padding-bottom: 2.25vw;
+  font-size: .9rem;
+  background-color: cc(bg);
+
+  @media (--tablet) {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    margin-bottom: 4.5vw;
+    display: flex;
+    align-items: stretch;
+
+
+    @media (--tablet) {
+      display: block;
+      margin-bottom: 2.25vw;
+      width: calc(100% / 3);
+    }
+
+    @media (--desktop) {
+      display: flex;
+      align-items: stretch;
+    }
+  }
+
+  &__image {
+    size: 35vw;
+    margin: 0 5% 0 0;
+    border: 4px solid cc(accent,alt);
+    border-radius: 100%;
+    @include bgCover;
+
+    @media (--tablet) {
+      size: 25vw;
+      margin: 0 5% 2.25vw;
+    }
+
+    @media (--desktop) {
+      size: 10vw;
+      margin: 0 5% 0 0;
+    }
+  }
+
+  &__info {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    @media (--tablet) {
+      width: 90%;
+      margin: 0 5% 2.25vw;
+    }
+
+    @media (--desktop) {
+      width: 50%;
+      margin: 0 5% 0 0;
+    }
+  }
+
+  &__name {
+    color: cc(primary);
+    font-size: 28px;
+    @include font(display);
+  }
+
+  &__role {
+    color: cc(sub,sidebar);
+    margin: .5em 0;
+    @include font(bold);
+  }
+}

@@ -33,6 +33,28 @@
     </div>
   </header>
 
+  <section class="member">
+
+    <? if ( have_rows('board_members') ) : while ( have_rows('board_members') ) : the_row();
+      $img  = get_sub_field('image');
+      $name = get_sub_field('name');
+      $role = get_sub_field('role');
+      $info = get_sub_field('info'); ?>
+
+      <div class="member__item">
+        <div class="member__image" style="background-image:url(<?= $img; ?>)"></div>
+
+        <div class="member__info">
+          <h4 class="member__name"><?= $name; ?></h4>
+          <h5 class="member__role"><?= $role; ?></h5>
+          <p><?= $info; ?></p>
+        </div>
+      </div>
+
+    <? endwhile; endif; ?>
+
+  </section>
+
   <section class="about__section">
     <h2 class="about__title about__title--waq"><?= $waq['title']; ?></h2>
     <p class="about__text about__text--waq"><?= $waq['text']; ?></p>
